@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_173843) do
+ActiveRecord::Schema.define(version: 2019_06_14_192538) do
+
+  create_table "tictactos", force: :cascade do |t|
+    t.string "status"
+    t.integer "winner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["winner_id"], name: "index_tictactos_on_winner_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
