@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to login_form_path
     else
       session[:username] = user.username
-      redirect_to user_path(user)
+      redirect_to home_path
     end
   end
 

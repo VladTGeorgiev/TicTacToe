@@ -10,6 +10,7 @@
   </head>
 
   <body>
+      <%= render "users/user_header" if curr_user %>
     <%= yield %>
   </body>
 </html>
