@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
+    if params[:user][:password] != params[:user][:confirm_password]
+      flash[:errors] = ["Your passwords should match"]
+      return redirect_to new_user_path
+    end
     @user = User.create(params.require(:user).permit(:username, :password))
     if @user.valid?
       redirect_to root_path
