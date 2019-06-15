@@ -12,7 +12,7 @@
   margin: 0;
 }
 
-input {
+input[type="checkbox"] {
   display: block;
   float: left;
   margin: 0;
@@ -26,9 +26,9 @@ input {
   outline: 2px solid black;
 }
 
-:checked {
+:checked, input[type="checkbox"]:hover {
   &:after {
-          line-height: 1.9;
+    line-height: 1.9;
     font-size: 110px;
     text-align: center;
     width: 200px;
@@ -39,6 +39,8 @@ input {
     color: red;
   }
 }
+
+
 
 body {
   text-align: center;

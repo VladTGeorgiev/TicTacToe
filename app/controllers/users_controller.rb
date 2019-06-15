@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :check_id, only: [:new, :create]
   def new
     @user = User.new
   end
@@ -12,4 +13,6 @@ class UsersController < ApplicationController
   def home
     @user = User.find_by(username: curr_user)
   end
+
+
 end

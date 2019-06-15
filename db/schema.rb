@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_192538) do
+ActiveRecord::Schema.define(version: 2019_06_15_125501) do
 
-  create_table "tictactos", force: :cascade do |t|
-    t.string "status"
-    t.integer "winner_id"
+  create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["winner_id"], name: "index_tictactos_on_winner_id"
+    t.integer "host_id"
+    t.string "name"
+    t.index ["host_id"], name: "index_rooms_on_host_id"
+  end
+
+  create_table "tictactoes", force: :cascade do |t|
+    t.integer "room_id"
+    t.string "status"
+    t.text "boxes"
+    t.index ["room_id"], name: "index_tictactoes_on_room_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -4,16 +4,12 @@
 
 <div class="game">
   <div class="board">
-    <input type="checkbox" id="box-1">
-    <input type="checkbox" id="box-2">
-    <input type="checkbox" id="box-3">
-    <br>
-    <input type="checkbox" id="box-4">
-    <input type="checkbox" id="box-5">
-    <input type="checkbox" id="box-6">
-    <br>
-    <input type="checkbox" id="box-7">
-    <input type="checkbox" id="box-8">
-    <input type="checkbox" id="box-9">
+    <%= form_tag room_path(@room), method: :patch do%>
+      <% (0..8).each do |n| %>
+        <%= "<br>".html_safe if n > 0 && n % 3 == 0%>
+        <%= render partial: "tictactoe/box", locals: {num: n, box: @game.boxes[n]}%>
+      <% end %>
+      <%= submit_tag "Pass the turn"%>
+    <% end %>
   </div>
 </div>
