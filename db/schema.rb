@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_173843) do
+ActiveRecord::Schema.define(version: 2019_06_15_151903) do
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "host_id"
+    t.string "name"
+    t.index ["host_id"], name: "index_rooms_on_host_id"
+  end
+
+  create_table "tictactoes", force: :cascade do |t|
+    t.integer "room_id"
+    t.string "status"
+    t.text "boxes"
+    t.integer "player"
+    t.index ["room_id"], name: "index_tictactoes_on_room_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
