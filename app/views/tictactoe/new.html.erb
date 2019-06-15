@@ -7,7 +7,7 @@
 <% end %>
 
 
-<h1><%= "Waiting for the other player, please refresh" unless @room.curr_player?(curr_user)%></h1>
+<h1><%= "Waiting for the other player, please refresh" unless @your_turn%></h1>
 
 
 <div class="game">
@@ -17,7 +17,7 @@
         <%= "<br>".html_safe if n > 0 && n % 3 == 0%>
         <%= render partial: "tictactoe/box", locals: {num: n, box: @game.boxes[n]}%>
       <% end %>
-      <%= submit_tag "Pass the turn"%>
+      <%= submit_tag "Pass the turn", disabled: !@your_turn%>
     <% end %>
   </div>
 </div>
