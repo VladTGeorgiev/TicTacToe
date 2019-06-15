@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    /* background-image: url("/app/assets/images/tic-tac-toe-backgrounds-wallpapers.jpg"); */
+    background-color: blueviolet;
+} 
+
+.container {
+    margin: 5rem;
+    text-align: center;
+}
+
+.errors {
+    color: red;
+}
