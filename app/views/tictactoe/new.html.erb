@@ -2,6 +2,9 @@
 <%= link_to "go back", home_path%>
 
 
+<h1><%= "Waiting for the other player, please refresh" unless @room.curr_player?(curr_user)%></h1>
+
+
 <div class="game">
   <div class="board">
     <%= form_tag room_path(@room), method: :patch do%>
