@@ -35,8 +35,20 @@ input[type="checkbox"] {
     height: 200px;
     display: block;
     background-color: none;
+  }
+}
+
+.player0:checked {
+  &:after {
     content: "♥";
     color: red;
+  }
+}
+
+.player1:checked {
+  &:after {
+    content: "⑊";
+    color: blue;
   }
 }
 

@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
 
   def create
     user = User.find_by(username: curr_user)
-    room = Room.create(host: user).create_tictactoe
+    room = Room.create(host: user).create_tictactoe(player: 0)
     redirect_to room_path(room)
   end
 
@@ -10,14 +10,9 @@ class RoomsController < ApplicationController
     room = Room.find(params[:id])
     game = room.tictactoe
 
-    arr = game.boxes.dup
-    params[:game][:boxes].each do |i, check|
-      arr[i.to_i] = !!check
-    end
+    game.next_turn(params[:game][:boxes])
 
-    game.update(boxes: arr)
-
-    redirect_to room
+    redirect_to home_path
   end
 
 

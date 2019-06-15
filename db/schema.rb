@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_15_125501) do
+ActiveRecord::Schema.define(version: 2019_06_15_151903) do
 
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_125501) do
     t.integer "room_id"
     t.string "status"
     t.text "boxes"
+    t.integer "player"
     t.index ["room_id"], name: "index_tictactoes_on_room_id"
   end
 
