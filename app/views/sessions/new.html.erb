@@ -1,0 +1,16 @@
+<h1>Log In</h1>
+<%= flash[:errors] if flash[:errors]%>
+
+<%= form_for @user, url: login_path do |f|%>
+<p>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+</p>
+
+<p>
+  <%= f.label :password_digest %>
+  <%= f.text_field :password_digest %>
+  <%= f.submit "Log In"%>
+</p>
+
+<% end %>
