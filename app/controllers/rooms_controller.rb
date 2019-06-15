@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   def create
     user = User.find_by(username: curr_user)
     room = Room.create(host: user).create_tictactoe(player: 0)
-    redirect_to room_path(room)
+    redirect_to room_path(id: room.id)
   end
 
   def update
@@ -12,8 +12,8 @@ class RoomsController < ApplicationController
     game = room.tictactoe
 
     game.next_turn(params[:game][:boxes])
-
-    sleep 15
+    game.next_player unless game.won? || game.draw?
+    sleep 12
     redirect_to room_path(room)
   end
 
@@ -21,10 +21,15 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @game = @room.tictactoe
-
-
-
-    render :"tictactoe/new", layout: "tictactoe"
+    if @game.status == "draw"
+      render :draw
+    elsif @game.status == @room.player_num(curr_user).to_s
+      render :won
+    elsif @game.status
+      render :lost
+    else
+      render :"tictactoe/new", layout: "tictactoe"
+    end
   end
 
   def show2

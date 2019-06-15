@@ -3,7 +3,10 @@ class Room < ApplicationRecord
   has_one :tictactoe
 
   def curr_player?(user)
-    player = (self.host.username == user ? 0 : 1)
-    self.tictactoe.player == player
+    self.tictactoe.player == player_num(user)
+  end
+
+  def player_num(user)
+    self.host.username == user ? 0 : 1
   end
 end
