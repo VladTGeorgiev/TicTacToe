@@ -23,7 +23,7 @@
           <a href="#"><li>Rooms</li></a>
           <a href="#"><li>Info</li></a>
           <a href="#"><li>About</li></a>
-          <a href=<%= logout_path %>><li>Log out</li></a>
+          <%=link_to "<li>Log out</li>".html_safe, logout_path, method: :delete %>
         </ul>
       </div>
     </nav>
