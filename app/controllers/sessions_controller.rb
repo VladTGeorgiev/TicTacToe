@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: params[:user][:username])
-    if !user
+    if !user || !user.authenticate(params[:user][:password])
       flash[:errors] = "Credentials aren't valid"
       redirect_to login_form_path
     else
