@@ -1,5 +1,10 @@
 <h1>Tic Tac Toe</h1>
 <%= link_to "go back", home_path%>
+<% if flash[:errors]%>
+  <% flash[:errors].each do |error|%>
+    <h2><%= error %></h2>
+  <% end %>
+<% end %>
 
 
 <h1><%= "Waiting for the other player, please refresh" unless @room.curr_player?(curr_user)%></h1>

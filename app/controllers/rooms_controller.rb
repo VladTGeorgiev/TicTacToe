@@ -7,13 +7,21 @@ class RoomsController < ApplicationController
   end
 
   def update
-
     room = Room.find(params[:id])
-    game = room.tictactoe
-
-    game.next_turn(params[:game][:boxes])
-    game.next_player unless game.won? || game.draw?
-    sleep 12
+    flash[:errors] ||= []
+    if !params[:game] || !params[:game][:boxes]
+      flash[:errors] << "You have to mark at least one box to make a turn"
+      return redirect_to room_path(room)
+    end
+    selections = params[:game][:boxes]
+    if selections.keys.size > 1
+      flash[:errors] << "You cannot select more than one box"
+    else
+      game = room.tictactoe
+      game.next_turn(selections)
+      game.next_player unless game.won? || game.draw?
+      sleep 12
+    end
     redirect_to room_path(room)
   end
 
