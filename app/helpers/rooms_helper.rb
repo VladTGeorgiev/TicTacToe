@@ -13,6 +13,10 @@ module RoomsHelper
     flash[:errors] << string
   end
 
+  def add_message(string)
+    flash[:message] = string
+  end
+
   def get_room
     Room.find(params[:id])
   end

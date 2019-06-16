@@ -42,32 +42,30 @@ class RoomsController < ApplicationController
 
 
   def show
-    flash[:errors] ||= []
-    @room = Room.find(params[:id])
-    user = User.find_by(username: curr_user)
+    @room = get_room
+    user = get_user
     if !(@room.host == user || @room.opponent == user)
-      flash[:errors] << 'Your game was not found'
+      add_error 'Your game was not found'
       return redirect_to home_path
     end
     @game = @room.tictactoe
     @your_turn = false if @game.status != "active"
     if @game.status == "draw"
-      flash[:message] = "It is a draw"
+      add_message "It is a draw"
     elsif @game.status == curr_player(@room).to_s
-      flash[:message] = "You won!!!"
+      add_message "You won!!!"
     elsif @game.status == "active"
       @your_turn = @room.curr_player?(curr_user)
     else
-      flash[:message] = "You lost :("
+      add_message "You lost :("
     end
       @active = (@game.status == "active")
       render :"tictactoe/new", layout: "tictactoe"
   end
 
   def concede
-    room = Room.find(params[:id])
-    user = User.find_by(username: curr_user)
-    winner = (room.host == user ? "1" : "0")
+    room = get_room
+    winner = (room.host == get_user ? "1" : "0")
     room.tictactoe.update(status: winner)
     redirect_to room_path(room)
   end
