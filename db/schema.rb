@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_15_151903) do
+ActiveRecord::Schema.define(version: 2019_06_16_114508) do
 
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "host_id"
     t.string "name"
+    t.integer "opponent_id"
     t.index ["host_id"], name: "index_rooms_on_host_id"
+    t.index ["opponent_id"], name: "index_rooms_on_opponent_id"
   end
 
   create_table "tictactoes", force: :cascade do |t|

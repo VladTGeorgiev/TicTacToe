@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
 
   def create
     user = User.find_by(username: curr_user)
-    room = Room.create(host: user).create_tictactoe(player: 0)
+    room = Room.create(host: user).create_tictactoe(player: 0, status: "active")
     redirect_to room_path(id: room.id)
   end
 
@@ -37,7 +37,7 @@ class RoomsController < ApplicationController
       render :draw
     elsif @game.status == curr_player(@room).to_s
       render :won
-    elsif @game.status
+    elsif @game.status != "active"
       render :lost
     else
       @your_turn = @room.curr_player?(curr_user)
