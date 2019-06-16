@@ -2,7 +2,7 @@ class Tictactoe < ApplicationRecord
   belongs_to :room
   serialize :boxes, Array
 
-  
+
 
   def next_turn(params)
     arr = boxes.dup
@@ -16,7 +16,7 @@ class Tictactoe < ApplicationRecord
   end
 
   def draw?
-    update(status: "won") if self.boxes.size == 9 && self.boxes.none?(&:nil?)
+    update(status: "draw") if self.boxes.size == 9 && self.boxes.none?(&:nil?)
     self.boxes.size == 9 && self.boxes.none?(&:nil?)
   end
 
