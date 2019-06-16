@@ -2,6 +2,6 @@
 
 <%= form_for Room.new do |f| %>
   <%= f.label :opponent%>
-  <%= f.collection_select :opponent, User.order(:username).select(&:playing?), :id, :username%>
+  <%= f.collection_select :opponent_id, User.order(:username).reject(&:playing?), :id, :username%>
   <%= f.submit "It's time to D-d-d-d-duel!"%>
 <% end %>
