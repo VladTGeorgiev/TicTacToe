@@ -1,3 +1,7 @@
 <h1>This is a personal space of <%= @user.username %></h1>
 <p>here will be different cool things and settings </p>
-<%= link_to "Start a game", rooms_path, method: :post %>
+<% if @cont_room %>
+  <%= link_to "Continue a game", room_path(@cont_room)%>
+<% else %>
+  <%= link_to "Start a game", rooms_path, method: :post %>
+<% end %>

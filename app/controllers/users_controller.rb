@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
   def home
     @user = User.find_by(username: curr_user)
+    @cont_room = Room.where(host: @user).find {|room| room.tictactoe.status == "active"}
   end
 
 

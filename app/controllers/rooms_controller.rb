@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
 
   def create
     user = User.find_by(username: curr_user)
-    room = Room.create(host: user).create_tictactoe(player: 0, status: "active")
+    room = Room.create(host: user, opponent_id: 1).create_tictactoe(player: 0, status: "active")
     redirect_to room_path(id: room.id)
   end
 
@@ -24,7 +24,6 @@ class RoomsController < ApplicationController
       game = room.tictactoe
       game.next_turn(selections)
       game.next_player unless game.won? || game.draw?
-      sleep 12
     end
     redirect_to room_path(room)
   end
