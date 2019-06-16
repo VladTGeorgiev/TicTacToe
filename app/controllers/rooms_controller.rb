@@ -50,6 +50,7 @@ class RoomsController < ApplicationController
     else
       flash[:message] = "You lost :("
     end
+      @active = (@game.status == "active")
       render :"tictactoe/new", layout: "tictactoe"
   end
 
