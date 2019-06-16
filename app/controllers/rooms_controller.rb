@@ -1,14 +1,19 @@
 class RoomsController < ApplicationController
   include RoomsHelper
   def new
+    @opponents = User.order(:username)
   end
 
   def create
-    opp_id = params[:room][:opponent]
+    opp_id = params[:room][:opponent_id]
+    flash[:errors] = []
+    if opp_id.to_i == get_user.id
+      flash[:errors] << "Congradulations, you played yourself"
+      return render :new
+    end
     unfinished_game = Room.where(host_id: opp_id).find {|room| room.tictactoe.status == "active"}
     unfinished_game ||= Room.where(opponent_id: opp_id).find {|room| room.tictactoe.status == "active"}
     if unfinished_game
-      flash[:errors] ||= []
       flash[:errors] << "This opponent is currently playing with someone else"
       return render :new
     end
@@ -41,10 +46,12 @@ class RoomsController < ApplicationController
 
 
   def show
+    flash[:errors] ||= []
     @room = Room.find(params[:id])
     user = User.find_by(username: curr_user)
     if !(@room.host == user || @room.opponent == user)
-      return render :no
+      flash[:errors] << 'Your game was not found'
+      return redirect_to home_path
     end
     @game = @room.tictactoe
     @your_turn = false if @game.status != "active"

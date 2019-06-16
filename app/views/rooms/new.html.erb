@@ -1,7 +1,7 @@
-<h1>Who would you like to choose as your opponent?</h1>
+<h1>Who would you like to play with?</h1>
 
 <%= form_for Room.new do |f| %>
   <%= f.label :opponent%>
-  <%= f.collection_select :opponent, User.order(:username), :id, :username%>
-  <%= f.submit "D-d-d-duel!"%>
+  <%= f.collection_select :opponent, User.order(:username).select(&:playing?), :id, :username%>
+  <%= f.submit "It's time to D-d-d-d-duel!"%>
 <% end %>
