@@ -4,7 +4,9 @@ class RoomsController < ApplicationController
     user = User.find_by(username: curr_user)
     cont_room = Room.where(host: user).find {|room| room.tictactoe.status == "active"}
     cont_room.tictactoe.update(status: "1") if cont_room
-    room = Room.create(host: user, opponent_id: 1).create_tictactoe(player: 0, status: "active")
+    cont_room_opp = Room.where(opponent: user).find {|room| room.tictactoe.status == "active"}
+    cont_room_opp.tictactoe.update(status: "0") if cont_room_opp
+    room = Room.create(host: user, opponent_id: 2).create_tictactoe(player: 0, status: "active")
     redirect_to room_path(id: room.id)
   end
 
@@ -33,21 +35,29 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    user = User.find_by(username: curr_user)
+    if !(@room.host == user || @room.opponent == user)
+      return render :no
+    end
     @game = @room.tictactoe
     if @game.status == "draw"
       render :draw
     elsif @game.status == curr_player(@room).to_s
       render :won
-    elsif @game.status != "active"
-      render :lost
-    else
+    elsif @game.status == "active"
       @your_turn = @room.curr_player?(curr_user)
       render :"tictactoe/new", layout: "tictactoe"
+    else
+      render :lost
     end
   end
 
-  def show2
-
+  def concede
+    room = Room.find(params[:id])
+    user = User.find_by(username: curr_user)
+    winner = (room.host == user ? "1" : "0")
+    room.tictactoe.update(status: winner)
+    redirect_to room_path(room)
   end
 
   private
