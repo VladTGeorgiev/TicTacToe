@@ -8,7 +8,7 @@
 <% end %>
 
 
-<h1><%= "Waiting for the other player, please refresh" unless @your_turn%></h1>
+<h1><%= "Waiting for the other player, please refresh" unless (@your_turn || !@active)%></h1>
 
 <%= link_to_if @active, "Concede", concede_path(@room), method: :post%>
 
