@@ -1,4 +1,5 @@
 <% player = (curr_user == @room.host.username ?  0 : 1)%>
 <% can_move = (@game.player == player) %>
 
-<%= check_box_tag "game[boxes][#{num}]", player, !!box, disabled: (!!box || !can_move), class: "player#{box}"%>
+
+<%= check_box_tag "game[boxes][#{num}]", player, !!box, disabled: (!!box || !@your_turn), class: "player#{box}"%>

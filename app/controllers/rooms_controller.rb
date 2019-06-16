@@ -40,16 +40,17 @@ class RoomsController < ApplicationController
       return render :no
     end
     @game = @room.tictactoe
+    @your_turn = false if @game.status != "active"
     if @game.status == "draw"
-      render :draw
+      flash[:message] = "It is a draw"
     elsif @game.status == curr_player(@room).to_s
-      render :won
+      flash[:message] = "You won!!!"
     elsif @game.status == "active"
       @your_turn = @room.curr_player?(curr_user)
-      render :"tictactoe/new", layout: "tictactoe"
     else
-      render :lost
+      flash[:message] = "You lost :("
     end
+      render :"tictactoe/new", layout: "tictactoe"
   end
 
   def concede

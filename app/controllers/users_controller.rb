@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @cont_room = Room.where(host: @user).find {|room| room.tictactoe.status == "active"}
     if !@cont_room
       @cont_room = Room.where(opponent: @user).find {|room| room.tictactoe.status == "active"}
-    ende
+    end
   end
 
 

@@ -1,8 +1,9 @@
 <h1>Tic Tac Toe</h1>
 <%= link_to "go back", home_path%>
+<h1><%= flash[:message] if flash[:message]%></h1>
 <% if flash[:errors]%>
   <% flash[:errors].each do |error|%>
-    <h2><%= error %></h2>
+    <h4><%= error %></h4>
   <% end %>
 <% end %>
 
