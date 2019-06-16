@@ -1,13 +1,25 @@
 class RoomsController < ApplicationController
+  include RoomsHelper
+  def new
+    @opponents = User.order(:username)
+  end
 
   def create
-    user = User.find_by(username: curr_user)
-    cont_room = Room.where(host: user).find {|room| room.tictactoe.status == "active"}
-    cont_room.tictactoe.update(status: "1") if cont_room
-    cont_room_opp = Room.where(opponent: user).find {|room| room.tictactoe.status == "active"}
-    cont_room_opp.tictactoe.update(status: "0") if cont_room_opp
-    room = Room.create(host: user, opponent_id: 2).create_tictactoe(player: 0, status: "active")
-    redirect_to room_path(id: room.id)
+    opp_id = params[:room][:opponent_id]
+    flash[:errors] = []
+    if opp_id.to_i == get_user.id
+      flash[:errors] << "Congradulations, you played yourself"
+      return render :new
+    end
+    unfinished_game = Room.where(host_id: opp_id).find {|room| room.tictactoe.status == "active"}
+    unfinished_game ||= Room.where(opponent_id: opp_id).find {|room| room.tictactoe.status == "active"}
+    if unfinished_game
+      flash[:errors] << "This opponent is currently playing with someone else"
+      return render :new
+    end
+    concede_prev_games
+    room = create_a_room
+    redirect_to room_path(room)
   end
 
   def update
@@ -34,22 +46,26 @@ class RoomsController < ApplicationController
 
 
   def show
+    flash[:errors] ||= []
     @room = Room.find(params[:id])
     user = User.find_by(username: curr_user)
     if !(@room.host == user || @room.opponent == user)
-      return render :no
+      flash[:errors] << 'Your game was not found'
+      return redirect_to home_path
     end
     @game = @room.tictactoe
+    @your_turn = false if @game.status != "active"
     if @game.status == "draw"
-      render :draw
+      flash[:message] = "It is a draw"
     elsif @game.status == curr_player(@room).to_s
-      render :won
+      flash[:message] = "You won!!!"
     elsif @game.status == "active"
       @your_turn = @room.curr_player?(curr_user)
-      render :"tictactoe/new", layout: "tictactoe"
     else
-      render :lost
+      flash[:message] = "You lost :("
     end
+      @active = (@game.status == "active")
+      render :"tictactoe/new", layout: "tictactoe"
   end
 
   def concede
@@ -64,4 +80,6 @@ class RoomsController < ApplicationController
   def curr_player(room)
     room.player_num(curr_user)
   end
+
+
 end

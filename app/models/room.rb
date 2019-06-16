@@ -10,4 +10,8 @@ class Room < ApplicationRecord
   def player_num(user)
     self.host.username == user ? 0 : 1
   end
+
+  def status
+    self.tictactoe.status
+  end
 end
