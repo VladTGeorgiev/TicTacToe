@@ -2,6 +2,8 @@ class RoomsController < ApplicationController
 
   def create
     user = User.find_by(username: curr_user)
+    cont_room = Room.where(host: user).find {|room| room.tictactoe.status == "active"}
+    cont_room.tictactoe.update(status: "1") if cont_room
     room = Room.create(host: user, opponent_id: 1).create_tictactoe(player: 0, status: "active")
     redirect_to room_path(id: room.id)
   end
