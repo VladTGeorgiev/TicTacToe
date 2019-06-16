@@ -5,3 +5,23 @@
 <% end %>
 <br>
 <%= link_to "Start a game", new_room_path %>
+<br>
+
+<table>
+  <tr>
+    <td>Win:</td>
+    <td><%= @wins %></td>
+  </tr>
+  <tr>
+    <td>Loss:</td>
+    <td><%= @loses %></td>
+  </tr>
+  <tr>
+    <td>Draw:</td>
+    <td><%= @draws %></td>
+  </tr>
+  <tr>
+    <td>Total:</td>
+    <td><%= @total %></td>
+  </tr>
+</table>

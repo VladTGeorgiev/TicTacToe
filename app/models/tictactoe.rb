@@ -15,8 +15,14 @@ class Tictactoe < ApplicationRecord
     update(player: player)
   end
 
+  def over?
+    return true if self.status != "active"
+    return update(status: "#{self.player}") if won?
+    return update(status: "draw") if draw?
+    false
+  end
+
   def draw?
-    update(status: "draw") if self.boxes.size == 9 && self.boxes.none?(&:nil?)
     self.boxes.size == 9 && self.boxes.none?(&:nil?)
   end
 
@@ -33,7 +39,6 @@ class Tictactoe < ApplicationRecord
        .<<(boxes[3] == i && boxes[3] == boxes[4] && boxes[3] == boxes[5])
        .<<(boxes[6] == i && boxes[6] == boxes[7] && boxes[6] == boxes[8])
 
-    update(status: "#{player}") if arr.any?
     arr.any?
   end
 
