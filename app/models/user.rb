@@ -23,4 +23,8 @@ class User < ApplicationRecord
   def draws
     rooms.select(&:draw?)
   end
+
+  def curr_room
+    rooms.find(&:active?)
+  end
 end

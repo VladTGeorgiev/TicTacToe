@@ -15,6 +15,10 @@ class Room < ApplicationRecord
     self.tictactoe.status
   end
 
+  def active?
+    self.tictactoe.status == "active"
+  end
+
   def won_by_host?
     status == "0"
   end
