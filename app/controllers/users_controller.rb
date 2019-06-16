@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   def home
     @user = User.find_by(username: curr_user)
     @cont_room = Room.where(host: @user).find {|room| room.tictactoe.status == "active"}
+    @wins = @user.wins.length
+    @loses = @user.loses.length
+    @draws = @user.draws.length
+    @total = @wins + @loses + @draws
     if !@cont_room
       @cont_room = Room.where(opponent: @user).find {|room| room.tictactoe.status == "active"}
     end
