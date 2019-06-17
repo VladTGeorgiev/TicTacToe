@@ -162,3 +162,7 @@
  {
    transform: none;
  }
+
+li a {
+  color: white;
+}

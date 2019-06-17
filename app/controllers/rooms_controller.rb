@@ -4,8 +4,8 @@ class RoomsController < ApplicationController
   end
 
   def index
-    user = get_user
-    @rooms = user.past_rooms
+    @user = get_user
+    @rooms = @user.past_rooms
   end
 
   def create

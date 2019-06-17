@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def past_rooms
     result = rooms
     result -= [curr_room] if curr_room
-    result
+    result.sort_by(&:created_at)
   end
 
   def curr_room
