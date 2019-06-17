@@ -10,7 +10,9 @@
   </head>
 
   <body>
+    <div class="main-container">
       <%= render "users/user_header" if curr_user %>
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

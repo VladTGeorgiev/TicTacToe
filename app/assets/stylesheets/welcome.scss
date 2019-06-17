@@ -1,8 +1,6 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import url("https://fonts.googleapis.com/css?family=Bad+Script");
-@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 
 $num_of_letters: 8;
 $glow_time: .5; // in seconds
@@ -24,7 +22,7 @@ body {
   align-items: center;
   height: 100vh;
   background: #000;
-  font-family: "Bad Script", cursive;
+  font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
 .title{
@@ -71,7 +69,6 @@ body {
 .neon {
   display: flex;
   flex-direction: column;
-
 }
 
 .w-wrapper {
@@ -79,7 +76,6 @@ body {
 }
 
 .neon a{
-  font-family: "Qucksand", sans-serif;
   text-shadow: 0 0 20px #ff005b;
   color: #fff;
   text-decoration: none;
