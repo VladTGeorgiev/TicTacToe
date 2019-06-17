@@ -17,20 +17,22 @@ $iteration_delay: 0;
   }
 }
 body {
+  background-image: url("wood_bg.jpg");
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #000;
-  font-family: "Bad Script", cursive;
+  font-family: "Qucksand", sans-serif;
+  //font-family: "Bad Script", cursive;
 }
 
 .title{
   font-size: 50px;
   margin-right: 70px;
-  color: #111
+  color: #111;
+  padding-bottom: 60px;
 }
 
 .title span {
@@ -71,12 +73,9 @@ body {
 .neon {
   display: flex;
   flex-direction: column;
-
+  padding-bottom: 70px;
 }
 
-.w-wrapper {
-  padding-bottom: 80px;
-}
 
 .neon a{
   font-family: "Qucksand", sans-serif;
@@ -94,4 +93,9 @@ body {
   top: 0;
   left: 0;
   padding: 0 20px;
+}
+
+.wrapper {
+  width: 200px;
+  height: 50px;
 }
