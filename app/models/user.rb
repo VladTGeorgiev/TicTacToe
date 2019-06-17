@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :hosted_rooms, foreign_key: :host_id, class_name: "Room"
   has_many :visited_rooms, foreign_key: :opponent_id, class_name: "Room"
-  # belongs_to :leaderboards
+  belongs_to :leaderboards
   validates :username, uniqueness: true, length: { minimum: 3 }
   validates :password, length: {minimum: 3}
   has_secure_password
