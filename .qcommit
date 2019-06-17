@@ -6,10 +6,7 @@ if [ -n "$1" ]; then
   git add .
   git commit -am "$1"
   git push
-  git checkout dev
-  git merge alisher
-  git push
-  git checkout alisher
+
 
 else
 
