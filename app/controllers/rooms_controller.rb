@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
   def index
     @user = get_user
     @rooms = @user.past_rooms
+    render layout: "rooms"
   end
 
   def create
