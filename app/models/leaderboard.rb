@@ -1,5 +1,4 @@
 class Leaderboard < ApplicationRecord
-    has_many :users
     def top_5_players
         User.all.sort_by{|user| user.wins.length}.reverse.first(5)
     end
