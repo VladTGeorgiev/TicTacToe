@@ -5,6 +5,6 @@
 :checked, input[type="checkbox"]:not([disabled="disabled"]):hover {
   &:after {
     content: "⑊";
-    color: blue;
+    color: #00b3ff;;
   }
 }

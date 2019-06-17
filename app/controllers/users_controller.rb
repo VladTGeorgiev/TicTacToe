@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @loses == 0
       @ratio = "N/A"
     else
-      @ratio = @wins/@loses
+      @ratio = @wins.to_f/@total.to_f
     end
   end
 
