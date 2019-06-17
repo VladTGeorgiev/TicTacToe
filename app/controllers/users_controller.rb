@@ -28,5 +28,21 @@ class UsersController < ApplicationController
     @total = @wins + @loses + @draws
   end
 
+  def edit
+    @user = User.find_by(username: curr_user)
+  end
+
+  def update
+      @user = User.find_by(username: curr_user)
+      @user.update(password_digest: :confirm_password)
+      redirect_to user_path(@user)       
+  end 
+
+  def destroy
+    @user = User.find_by(username: curr_user)
+    @user.destroy
+    redirect_to home_path(@user) 
+  end
+
 
 end
