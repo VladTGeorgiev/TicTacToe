@@ -40,6 +40,20 @@ class RoomsController < ApplicationController
     redirect_to room_path(room)
   end
 
+  def history
+    @room = get_room
+    user = get_user
+    if !(@room.host == user || @room.opponent == user)
+      add_error 'Your game was not found'
+      return redirect_to home_path
+    end
+    @game = @room.tictactoe
+    @boxes = @game.game_at(params[:turn].to_i - 1)
+    @your_turn = false
+    @active = false
+    render :"tictactoe/new", layout: "tictactoe"
+  end
+
 
   def show
     @room = get_room
@@ -49,6 +63,7 @@ class RoomsController < ApplicationController
       return redirect_to home_path
     end
     @game = @room.tictactoe
+    @boxes = @game.boxes
     @your_turn = false if @game.status != "active"
     if @game.status == "draw"
       add_message "It is a draw"

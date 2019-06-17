@@ -18,7 +18,7 @@
     <%= form_tag room_path(@room), method: :patch do%>
       <% (0..8).each do |n| %>
         <%= "<br>".html_safe if n > 0 && n % 3 == 0%>
-        <%= render partial: "tictactoe/box", locals: {num: n, box: @game.boxes[n]}%>
+        <%= render partial: "tictactoe/box", locals: {num: n, box: @boxes[n]}%>
       <% end %>
       <%= submit_tag "Pass the turn", disabled: !@your_turn%>
     <% end %>
