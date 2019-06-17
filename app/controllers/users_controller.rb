@@ -26,7 +26,11 @@ class UsersController < ApplicationController
     @loses = @user.loses.length
     @draws = @user.draws.length
     @total = @wins + @loses + @draws
-    @ratio = @wins/@loses
+    if @loses == 0
+      @ratio = "N/A"
+    else
+      @ratio = @wins/@loses
+    end
   end
 
   def edit
