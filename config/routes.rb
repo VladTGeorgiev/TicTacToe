@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'sessions/create', to: "sessions#create", as: "login"
   delete 'sessions/destroy', to: "sessions#destroy", as: "logout"
   root 'welcome#index'
+  get "rooms/:id/history/:turn", to: "rooms#history", as: "history"
   resources :users
   get "/home", to: "users#home", as: "home"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

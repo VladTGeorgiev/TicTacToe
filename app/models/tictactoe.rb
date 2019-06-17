@@ -1,13 +1,26 @@
 class Tictactoe < ApplicationRecord
   belongs_to :room
   serialize :boxes, Array
+  serialize :history, Array
 
+  def game_at(turn)
+    arr = []
+    self.history[0..turn].each do |move|
+      player, box = move.split(",")
+      arr[box.to_i] = player
+    end
+    arr
+  end
 
 
   def next_turn(params)
-    arr = boxes.dup
-    params.each { |i, player| arr[i.to_i] = player }
-    update(boxes: arr)
+    arr = self.boxes.dup
+    new_history = self.history.dup
+    params.each do |i, player|
+      arr[i.to_i] = player
+      new_history << "#{player},#{i}"
+    end
+    update(boxes: arr, history: new_history)
   end
 
   def next_player

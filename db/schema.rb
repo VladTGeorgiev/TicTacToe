@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_092643) do
+ActiveRecord::Schema.define(version: 2019_06_17_131926) do
 
   create_table "leaderboards", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -27,11 +27,28 @@ ActiveRecord::Schema.define(version: 2019_06_17_092643) do
     t.index ["opponent_id"], name: "index_rooms_on_opponent_id"
   end
 
+  create_table "t_histories", force: :cascade do |t|
+    t.integer "tictactoe_id"
+    t.text "t0"
+    t.text "t1"
+    t.text "t2"
+    t.text "t3"
+    t.text "t4"
+    t.text "t5"
+    t.text "t6"
+    t.text "t7"
+    t.text "t8"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tictactoe_id"], name: "index_t_histories_on_tictactoe_id"
+  end
+
   create_table "tictactoes", force: :cascade do |t|
     t.integer "room_id"
     t.string "status"
     t.text "boxes"
     t.integer "player"
+    t.text "history"
     t.index ["room_id"], name: "index_tictactoes_on_room_id"
   end
 
