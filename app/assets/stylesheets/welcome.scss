@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url("https://fonts.googleapis.com/css?family=Bad+Script");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 
 body {
   margin: 0;
@@ -85,4 +86,32 @@ body {
     filter: blur(0px);
     text-shadow: none;
   }
+}
+
+.neon {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.w-wrapper {
+  padding-bottom: 80px;
+}
+
+.neon a{
+  font-family: "Qucksand", sans-serif;
+  text-shadow: 0 0 20px #ff005b;
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.neon a:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 20px;
 }
