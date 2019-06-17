@@ -9,6 +9,7 @@ if [ -n "$1" ]; then
 
 
 else
+  
 
   echo "no commit message is given"
 
