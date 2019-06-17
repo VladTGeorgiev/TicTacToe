@@ -1,3 +1,27 @@
 <h1>This is a personal space of <%= @user.username %></h1>
 <p>here will be different cool things and settings </p>
-<%= link_to "Start a game", rooms_path, method: :post %>
+<% if @cont_room %>
+  <%= link_to "Continue a game", room_path(@cont_room)%>
+<% end %>
+<br>
+<%= link_to "Start a game", new_room_path %>
+<br>
+
+<table>
+  <tr>
+    <td>Win:</td>
+    <td><%= @wins %></td>
+  </tr>
+  <tr>
+    <td>Loss:</td>
+    <td><%= @loses %></td>
+  </tr>
+  <tr>
+    <td>Draw:</td>
+    <td><%= @draws %></td>
+  </tr>
+  <tr>
+    <td>Total:</td>
+    <td><%= @total %></td>
+  </tr>
+</table>

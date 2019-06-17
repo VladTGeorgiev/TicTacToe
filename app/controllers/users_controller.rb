@@ -4,7 +4,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
-    @user = User.create(params.require(:user).permit(:username, :password_digest))
+    if params[:user][:password] != params[:user][:confirm_password]
+      flash[:errors] = ["Your passwords should match"]
+      return redirect_to new_user_path
+    end
+    @user = User.create(params.require(:user).permit(:username, :password))
     if @user.valid?
       redirect_to root_path
     else
@@ -17,6 +21,11 @@ class UsersController < ApplicationController
   end
   def home
     @user = User.find_by(username: curr_user)
+    @cont_room = @user.curr_room
+    @wins = @user.wins.length
+    @loses = @user.loses.length
+    @draws = @user.draws.length
+    @total = @wins + @loses + @draws
   end
 
 

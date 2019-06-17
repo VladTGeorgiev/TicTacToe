@@ -6,8 +6,13 @@
 </p>
 
 <p>
-  <%= f.label :password_digest %>
-  <%= f.text_field :password_digest %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+</p>
+
+<p>
+  <%= f.label :confirm_password %>
+  <%= f.password_field :confirm_password %>
   <%= f.submit "Sign Up"%>
 </p>
 <% end %>

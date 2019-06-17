@@ -1,56 +1,79 @@
 class RoomsController < ApplicationController
+  include RoomsHelper
+  def new
+  end
 
   def create
-    user = User.find_by(username: curr_user)
-    room = Room.create(host: user).create_tictactoe(player: 0)
-    redirect_to room_path(id: room.id)
+    opponent = get_opponent
+    clear_errors
+    if opponent == get_user
+      flash[:errors] << "Congradulations, you played yourself"
+      return redirect_to new_room_path
+    end
+    if opponent.playing?
+      flash[:errors] << "This opponent is currently playing with someone else"
+      return redirect_to new_room_path
+    end
+    concede_prev_games
+    room = create_a_room
+    redirect_to room_path(room)
   end
 
   def update
-    room = Room.find(params[:id])
-    flash[:errors] ||= []
+    room = get_room
     if !params[:game] || !params[:game][:boxes]
       if room.curr_player?(curr_user)
-        flash[:errors] << "You have to mark at least one box to make a turn"
+        add_error "You have to mark at least one box to make a turn"
       else
-        flash[:errors] << "It is not your turn yet"
+        add_error "It is not your turn yet"
       end
       return redirect_to room_path(room)
     end
     selections = params[:game][:boxes]
     if selections.keys.size > 1
-      flash[:errors] << "You cannot select more than one box"
+      add_error "You cannot select more than one box"
     else
       game = room.tictactoe
       game.next_turn(selections)
-      game.next_player unless game.won? || game.draw?
-      sleep 12
+      game.next_player unless game.over?
     end
     redirect_to room_path(room)
   end
 
 
   def show
-    @room = Room.find(params[:id])
-    @game = @room.tictactoe
-    if @game.status == "draw"
-      render :draw
-    elsif @game.status == curr_player(@room).to_s
-      render :won
-    elsif @game.status
-      render :lost
-    else
-      @your_turn = @room.curr_player?(curr_user)
-      render :"tictactoe/new", layout: "tictactoe"
+    @room = get_room
+    user = get_user
+    if !(@room.host == user || @room.opponent == user)
+      add_error 'Your game was not found'
+      return redirect_to home_path
     end
+    @game = @room.tictactoe
+    @your_turn = false if @game.status != "active"
+    if @game.status == "draw"
+      add_message "It is a draw"
+    elsif @game.status == curr_player(@room).to_s
+      add_message "You won!!!"
+    elsif @game.status == "active"
+      @your_turn = @room.curr_player?(curr_user)
+    else
+      add_message "You lost :("
+    end
+      @active = (@game.status == "active")
+      render :"tictactoe/new", layout: "tictactoe"
   end
 
-  def show2
-
+  def concede
+    room = get_room
+    winner = (room.host == get_user ? "1" : "0")
+    room.tictactoe.update(status: winner)
+    redirect_to room_path(room)
   end
 
   private
   def curr_player(room)
     room.player_num(curr_user)
   end
+
+
 end
