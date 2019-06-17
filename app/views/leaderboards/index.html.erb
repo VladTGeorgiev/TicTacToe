@@ -1,0 +1,14 @@
+<div>
+  Top 5 winners :)
+      <% @top_5_players.each do |user| %>
+      <%= user.username %>
+      <%= user.wins.count %>
+  <% end%>
+</div>
+<div>
+  Top 5 loosers :(
+      <% @top_5_loosers.each do |user| %>
+      <%= user.username %>
+      <%= user.wins.count %>
+  <% end%>
+</div>
