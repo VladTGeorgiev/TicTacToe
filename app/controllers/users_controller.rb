@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def update
       @user = User.find_by(username: curr_user)
-      @user.update(password_digest: :confirm_password)
+      @user.update(password: params[:user][:password])
       redirect_to user_path(@user)       
   end 
 
