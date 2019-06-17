@@ -4,8 +4,12 @@ class Tictactoe < ApplicationRecord
   serialize :history, Array
 
   def game_at(turn)
+    self.history = history
+    return nil if turn > history.length - 1 || turn  < -history.length
+
     arr = []
-    self.history[0..turn].each do |move|
+
+    history[0..turn].each do |move|
       player, box = move.split(",")
       arr[box.to_i] = player
     end
