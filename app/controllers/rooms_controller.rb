@@ -8,11 +8,11 @@ class RoomsController < ApplicationController
     clear_errors
     if opponent == get_user
       flash[:errors] << "Congradulations, you played yourself"
-      return render :new
+      return redirect_to new_room_path
     end
     if opponent.playing?
       flash[:errors] << "This opponent is currently playing with someone else"
-      return render :new
+      return redirect_to new_room_path
     end
     concede_prev_games
     room = create_a_room
