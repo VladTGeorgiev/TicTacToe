@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :rooms
+  post "rooms/new", to: "rooms#create", as: "start_room"
   post "rooms/:id/concede", to: "rooms#concede", as: "concede"
   get 'tictactoe', to: "tictactoe#new", as: "tictactoe"
   get 'sessions/new', to: "sessions#new", as: "login_form"
