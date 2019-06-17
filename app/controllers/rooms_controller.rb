@@ -7,11 +7,11 @@ class RoomsController < ApplicationController
     opponent = get_opponent
     clear_errors
     if opponent == get_user
-      flash[:errors] << "Congradulations, you played yourself"
+      add_error "Congradulations, you played yourself"
       return redirect_to new_room_path
     end
     if opponent.playing?
-      flash[:errors] << "This opponent is currently playing with someone else"
+      add_error "This opponent is currently playing with someone else"
       return redirect_to new_room_path
     end
     concede_prev_games

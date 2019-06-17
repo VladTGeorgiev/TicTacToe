@@ -4,6 +4,18 @@
 @import url("https://fonts.googleapis.com/css?family=Bad+Script");
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 
+$num_of_letters: 8;
+$glow_time: .5; // in seconds
+$iteration_delay: 0;
+
+
+@mixin letters {
+  @for $i from 1 through $num_of_letters {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * $glow_time}s;
+    }
+  }
+}
 body {
   margin: 0;
   padding: 0;
@@ -25,45 +37,13 @@ body {
   display: table-cell;
   margin: 0;
   padding: 0;
-  -webkit-animation: glow 4.5s linear infinite;
-  transition-delay: 2s;
+  -webkit-animation: glow #{$iteration_delay + $glow_time * $num_of_letters }s linear infinite;
 }
-.title span:nth-child(1)
+.title span
 {
-  animation-delay: 0s;
+  @include letters
 }
-.title span:nth-child(2)
-{
-  animation-delay: 0.5s;
-}
-.title span:nth-child(3)
-{
-  animation-delay: 1s;
-}
-.title span:nth-child(4)
-{
-  animation-delay: 1.5s;
-}
-.title span:nth-child(5)
-{
-  animation-delay: 2s;
-}
-.title span:nth-child(6)
-{
-  animation-delay: 2.5s;
-}
-.title span:nth-child(7)
-{
-  animation-delay: 3s;
-}
-.title span:nth-child(8)
-{
-  animation-delay: 3.5s;
-}
-.title span:nth-child(9)
-{
-  animation-delay: 4s;
-}
+
 
 @-webkit-keyframes glow
 {
@@ -80,7 +60,7 @@ body {
                 0 0 300px #00b3ff,
                 0 0 400px #00b3ff;
   }
-  12%, 100%
+  #{100 / ($num_of_letters + ($iteration_delay / $glow_time))}%, 100%
   {
     color: #111;
     filter: blur(0px);
