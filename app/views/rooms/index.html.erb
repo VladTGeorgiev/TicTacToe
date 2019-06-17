@@ -1,0 +1,6 @@
+<h1>Previous Games</h1>
+<ul>
+  <% @rooms.each_with_index do |room, i| %>
+    <li><%= link_to "Game #{i}", room_path(room)%></li>
+  <% end %>
+</ul>

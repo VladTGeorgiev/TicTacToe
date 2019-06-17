@@ -7,7 +7,7 @@
     <ul id="menu">
       <%= link_to "<li>Home</li>".html_safe, home_path%>
       <a href="#"><li>Leaderboard</li></a>
-      <a href="#"><li>Rooms</li></a>
+      <%= link_to "<li>Previous Games</li>".html_safe, rooms_path%>
       <a href="#"><li>Info</li></a>
       <a href="#"><li>About</li></a>
       <%=link_to "<li>Log out</li>".html_safe, logout_path, method: :delete %>

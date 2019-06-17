@@ -14,6 +14,7 @@ class Room < ApplicationRecord
   def status
     self.tictactoe.status
   end
+  
 
   def active?
     self.tictactoe.status == "active"

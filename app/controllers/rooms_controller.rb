@@ -3,6 +3,11 @@ class RoomsController < ApplicationController
   def new
   end
 
+  def index
+    user = get_user
+    @rooms = user.past_rooms
+  end
+
   def create
     opponent = get_opponent
     clear_errors
