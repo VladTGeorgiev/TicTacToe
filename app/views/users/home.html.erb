@@ -1,35 +1,43 @@
 <h1><%= render "users/user_header" if curr_user %></h1>
-<% if @cont_room %>
-<%= link_to "Continue a game", room_path(@cont_room)%>
-<% end %>
-<br>
-<%= link_to "Start a game", new_room_path %>
-<br>
-<%= link_to 'Edit password', edit_user_path(curr_user) %>
-<br>
-
-<div class="stats">
-  <h2 class="">Here are your stats:</h2>
-  <div class="leaderboard-cards-wrapper">
-      <div class="leaderboard_card">
-          <h2><b>Win:</b></h2>
-              <p><%= @wins %></p><br>
-      </div>
-      <div class="leaderboard_card">
-          <h2><b>Loss:</b></h2>
-              <p><%= @loses %></p><br>
-      </div>
-      <div class="leaderboard_card">
-          <h2><b>Draw:</b></h2>
-              <p><%= @draws %></p><br>
-      </div>
-      <div class="leaderboard_card">
-          <h2><b>Total:</b></h2>
-              <p><%= @total %></p><br>
-      </div>
-      <div class="leaderboard_card">
-          <h2><b>Success ratio:</b></h2>
-              <p><%= @ratio %>%</p><br>
-      </div>
-  </div>
+<div>
+    <div>
+        <% if @cont_room %>
+        <%= link_to "Continue a game", room_path(@cont_room)%>
+        <% end %>
+    </div>
+    <br>
+    <div>
+        <%= link_to "Start a game", new_room_path %>
+    </div>
+    <br>
 </div>
+<div class="stats">
+  <h2 class="">Here are their stats:</h2>
+        <div class="stats-cards-wrapper">
+            <div class="stats-card-1">
+                <h2><b>Win: </b></h2>
+                    <p><%= @user.wins.count %></p><br>
+            </div>
+            <div class="stats-card-2">
+                <h2><b>Loss:</b></h2>
+                    <p><%= @user.loses.count %></p><br>
+            </div>
+            <div class="stats-card-3">
+                <h2><b>Draw:</b></h2>
+                    <p><%= @user.draws.count %></p><br>
+            </div>
+            <div class="stats-card-4">
+                <h2><b>Total:</b></h2>
+                    <p><%= @user.total.count %></p><br>
+            </div>
+            <div class="stats-card-5">
+                <h2><b>Success ratio:</b></h2>
+                    <p><%= @user.ratio %>%</p><br>
+            </div>
+        </div>
+</div>
+
+<div>
+    <%= link_to 'Edit password', edit_user_path(curr_user) %>
+</div>
+

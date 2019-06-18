@@ -15,19 +15,18 @@
  */
 
 .main-container {
-    margin: 5rem;
+    margin-top: 3rem;
     text-align: center;
 }
 
 .errors {
-    color: tomato;
+    color: #ff005b;
 }
 
 .card
 {
-  background-color: white;
+  background-color: #cdcdcd;
   color: black;
-
 }
 
 p {
@@ -56,8 +55,35 @@ h1, h2 {
 }
 
 .stats {
-  flex: left;
+  margin-top: 5rem;
 }
+
+.stats-cards-wrapper {
+  display: grid;
+  grid-template-columns: 15% 35% 35% 15%;
+}
+
+.stats-card-1 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.stats-card-2 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.stats-card-3 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.stats-card-4 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.stats-card-5 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
 
  body
  {
@@ -72,7 +98,7 @@ h1, h2 {
  a
  {
   text-shadow: 0 0 20px #ff005b;
-  color: #fff;
+  color: #cdcdcd;
   text-decoration: none;
   font-size: 1.5rem;
   margin-bottom: 2rem;
@@ -80,6 +106,7 @@ h1, h2 {
 
  #gamepad {
    font-size: 2.5rem;
+   color:  #cdcdcd;
  }
 
  a:hover
@@ -88,7 +115,7 @@ h1, h2 {
  }
 
  li a {
-  color: white;
+  color: #cdcdcd;
 }
 
  #menuToggle
