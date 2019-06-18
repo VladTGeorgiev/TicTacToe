@@ -25,6 +25,12 @@ class User < ApplicationRecord
     rooms.select(&:draw?)
   end
 
+  def past_rooms
+    result = rooms
+    result -= [curr_room] if curr_room
+    result.sort_by(&:created_at)
+  end
+
   def curr_room
     rooms.find(&:active?)
   end
