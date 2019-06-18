@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: curr_user)
     session.delete(:username)
     @user.destroy
-    redirect_to home_path
+    redirect_to root_path
   end
 
 end
