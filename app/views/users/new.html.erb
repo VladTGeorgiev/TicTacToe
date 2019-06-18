@@ -1,18 +1,25 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f|%>
-<p>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-</p>
+<div id="signup_card">
+  <div id="image_wrapper">
+    <%=image_tag("man_back")%>
+  </div>
+  <div id="signup_text">
+    <h1>Sign Up</h1>
+    <%= form_for @user do |f|%>
+    <p>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </p>
 
-<p>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-</p>
+    <p>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </p>
 
-<p>
-  <%= f.label :confirm_password %>
-  <%= f.password_field :confirm_password %>
-  <%= f.submit "Sign Up"%>
-</p>
-<% end %>
+    <p>
+      <%= f.label :confirm_password %>
+      <%= f.password_field :confirm_password %>
+      <%= f.submit "Sign Up"%>
+    </p>
+    <% end %>
+  </div>
+</div>

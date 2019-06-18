@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :check_id, only: [:new, :create]
   def new
     @user = User.new
+    render layout: "sign_up"
   end
   def create
     if params[:user][:password] != params[:user][:confirm_password]
@@ -40,13 +41,13 @@ class UsersController < ApplicationController
   def update
       @user = User.find_by(username: curr_user)
       @user.update(password: params[:user][:password])
-      redirect_to user_path(@user)       
-  end 
+      redirect_to user_path(@user)
+  end
 
   def destroy
     @user = User.find_by(username: curr_user)
     @user.destroy
-    redirect_to home_path(@user) 
+    redirect_to home_path(@user)
   end
 
 end
