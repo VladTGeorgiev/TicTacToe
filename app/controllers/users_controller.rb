@@ -26,10 +26,10 @@ class UsersController < ApplicationController
     @loses = @user.loses.length
     @draws = @user.draws.length
     @total = @wins + @loses + @draws
-    if @loses == 0
+    if @total == 0
       @ratio = "N/A"
     else
-      @ratio = @wins.to_f/@total.to_f
+      @ratio = (@wins.to_f/@total.to_f).round(2)
     end
   end
 
@@ -48,6 +48,5 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to home_path(@user) 
   end
-
 
 end
