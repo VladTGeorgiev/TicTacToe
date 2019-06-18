@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :check_id, only: [:new, :create]
   def new
     @user = User.new
+    render layout: "sign_up"
   end
 
   def create

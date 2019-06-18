@@ -1,20 +1,28 @@
 
-<div class="image-wrapper">
-  
-  <div class="card">
-    <h1>Log In</h1>
-
+<div id="login_card">
+  <div id="image_wrapper">
+    <%=image_tag("man_back")%>
+  </div>
+  <div id="login_text">
+    <h1 id="login-title"></h1>
     <%= form_for @user, url: login_path do |f|%>
-    <p>
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </p>
+    <table>
+      <tr>
+        <td><%= f.label :username %></td>
+        <td><%= f.text_field :username %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :password %></td>
+        <td><%= f.password_field :password %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td id="login_button"><%= f.submit "Log In"%></td>
+      </tr>
+    </table>
 
-    <p>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-      <%= f.submit "Log In"%>
+
+
     <% end %>
-    </p>
   </div>
 </div>
