@@ -1,36 +1,35 @@
-<h1>This is your personal page.</h1>
-<p>here will be different cool things and settings </p>
-<%= render "users/user_header" if curr_user %>
+<h1><%= render "users/user_header" if curr_user %></h1>
 <% if @cont_room %>
-  <%= link_to "Continue a game", room_path(@cont_room)%>
+<%= link_to "Continue a game", room_path(@cont_room)%>
 <% end %>
 <br>
 <%= link_to "Start a game", new_room_path %>
 <br>
-<%= link_to 'Edit user', edit_user_path(curr_user) %>
+<%= link_to 'Edit password', edit_user_path(curr_user) %>
 <br>
 
-<div class="main-container">
-<table>
-  <tr>
-    <td>Win:</td>
-    <td><%= @wins %></td>
-  </tr>
-  <tr>
-    <td>Loss:</td>
-    <td><%= @loses %></td>
-  </tr>
-  <tr>
-    <td>Draw:</td>
-    <td><%= @draws %></td>
-  </tr>
-  <tr>
-    <td>Total:</td>
-    <td><%= @total %></td>
-  </tr>
-    <tr>
-    <td>Your success ratio:</td>
-    <td><%= @ratio %>%</td>
-  </tr>
-</table>
+<div class="stats">
+  <h2 class="">Here are your stats:</h2>
+  <div class="leaderboard-cards-wrapper">
+      <div class="leaderboard_card">
+          <h2><b>Win:</b></h2>
+              <p><%= @wins %></p><br>
+      </div>
+      <div class="leaderboard_card">
+          <h2><b>Loss:</b></h2>
+              <p><%= @loses %></p><br>
+      </div>
+      <div class="leaderboard_card">
+          <h2><b>Draw:</b></h2>
+              <p><%= @draws %></p><br>
+      </div>
+      <div class="leaderboard_card">
+          <h2><b>Total:</b></h2>
+              <p><%= @total %></p><br>
+      </div>
+      <div class="leaderboard_card">
+          <h2><b>Success ratio:</b></h2>
+              <p><%= @ratio %>%</p><br>
+      </div>
+  </div>
 </div>
