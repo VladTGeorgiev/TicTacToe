@@ -3,7 +3,7 @@
     <%=image_tag("man_back")%>
   </div>
   <div id="signup_text">
-    <h1 id="sign-up-title">Sign Up</h1>
+    <h1 id="sign-up-title"></h1>
     <%= form_for @user do |f|%>
     <table>
       <tr>
@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <td></td>
-        <td><%= f.submit "Sign Up"%></td>
+        <td id="sign_up_button"><%= f.submit "Sign Up"%></td>
       </tr>
     </table>
     <% end %>

@@ -9,16 +9,33 @@ img {
 
 }
 
+#sign_up_button input, #login_button input {
+  text-shadow: 0 0 20px #ff005b;
+  border: none;
+  background: none;
+  color: #cdcdcd;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  &:hover
+  {
+    color: #ff005b;
+  }
+}
+
+
+
+
  #image_wrapper {
    object-fit: cover;
 width: 100%;
 height: 100%;
  }
-#signup_card {
+#signup_card, #login_card {
   height: 90vh;
 }
 
-#signup_text {
+#signup_text, #login_text {
   position: absolute;
 position: absolute;
 top: 55%;
@@ -27,8 +44,6 @@ margin-top: -50px;
 margin-left: -50px;
 /* width: 100px; */
 /* height: 100px; */
-opacity: .7;
-text-shadow: 0 0 20px #4214fd,
-             0 0 40px #4214fd;
-color: #fff;
+opacity: .85;
+text-shadow: 0 0 20px #4214fd;
 }

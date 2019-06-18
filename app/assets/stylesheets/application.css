@@ -228,4 +228,30 @@ h1, h2 {
    transform: none;
  }
 
+ #edit_button input, #delete_button input {
+   text-shadow: 0 0 20px #ff005b;
+   border: none;
+   background: none;
+   color: #cdcdcd;
+   text-decoration: none;
+   font-size: 1.5rem;
+   margin-bottom: 2rem;
+   &:hover
+   {
+     color: #ff005b;
+   }
+ }
 
+
+ #edit_text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+ /* width: 100px; */
+ /* height: 100px; */
+ text-shadow: 0 0 20px #00b3ff;
+ }
+ #edit_text table {
+  margin-left: auto;
+  margin-right: auto;
+ }
