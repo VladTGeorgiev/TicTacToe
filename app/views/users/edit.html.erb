@@ -1,16 +1,28 @@
-<h1>Edit</h1>
-<%= form_for @user do |f|%>
+<div id="edit_text">
+  <h1>Edit</h1>
+  <%= form_for @user do |f|%>
 
-<p>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-</p>
+  <table>
+    <tr>
+      <td><%= f.label :password %></td>
+      <td><%= f.password_field :password %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :confirm_password %></td>
+      <td><%= f.password_field :confirm_password %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="edit_button"><%= f.submit "Edit Password"%></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="delete_button">  <%= button_to "Delete user", @user, :method => :delete %></td>
+    </tr>
+  </table>
 
-<p>
-  <%= f.label :confirm_password %>
-  <%= f.password_field :confirm_password %>
-  <%= f.submit "Edit password"%>
-</p>
-<% end %>
 
-<%= button_to "Delete user", @user, :method => :delete %>
+
+  <% end %>
+
+</div>
