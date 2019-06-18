@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :check_id, only: [:new, :create]
   def new
+    return redirect_to home_path if curr_user
     @user = User.new
     render layout: "sign_up"
   end
@@ -11,7 +12,8 @@ class UsersController < ApplicationController
     end
     @user = User.create(params.require(:user).permit(:username, :password))
     if @user.valid?
-      redirect_to root_path
+      session[:username] = params[:user][:username]
+      redirect_to home_path
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'tictactoe', to: "tictactoe#new", as: "tictactoe"
   get 'sessions/new', to: "sessions#new", as: "login_form"
   post 'sessions/create', to: "sessions#create", as: "login"
-  delete 'sessions/destroy', to: "sessions#destroy", as: "logout"
+  delete 'logout', to: "sessions#destroy", as: "logout"
   root 'welcome#index'
   get "rooms/:id/history/:turn", to: "rooms#history", as: "history"
   resources :users
