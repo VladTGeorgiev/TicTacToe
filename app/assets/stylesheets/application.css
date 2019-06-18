@@ -118,6 +118,10 @@ h1, h2 {
   color: #cdcdcd;
 }
 
+.new_game {
+  margin-top: 3rem;
+}
+
  #menuToggle
  {
    display: block;
