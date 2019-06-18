@@ -40,14 +40,14 @@ input[type="checkbox"]:checked, input[type="checkbox"]:hover {
 .player0:checked {
   &:after {
     content: "♥";
-    color: red;
+    color: #ff005b;
   }
 }
 
 .player1:checked {
   &:after {
     content: "⑊";
-    color: blue;
+    color: #00b3ff;
   }
 }
 

@@ -14,16 +14,6 @@
  *= require_self
  */
 
- /* #054A91
- #3E7CB1
- #81A4CD
-
- #DBE4EE
-
- #F17300 */
-
-
-
 .main-container {
     margin: 5rem;
     text-align: center;
@@ -44,20 +34,29 @@ p {
   margin: 1%;
 }
 
-h2 {
-  margin-bottom: 10%;
+h1 {
+  font-size: 4rem;
+}
+
+h1, h2 {
   text-shadow: 0 0 20px #00b3ff;
 }
+
 .leaderboard-cards-wrapper {
   width: 100%;
   margin: auto;
+  margin-top: 2rem;
+  flex: left;
 }
 
 .leaderboard_card{
-  box-shadow: 0, 0, 25px, 10px rgba(241, 239, 241, 0.6);
   width: 30%;
   float: left;
   margin: 1%;
+}
+
+.stats {
+  flex: left;
 }
 
  body
@@ -75,14 +74,22 @@ h2 {
   text-shadow: 0 0 20px #ff005b;
   color: #fff;
   text-decoration: none;
-  margin: 0;
-  padding: 0 20px;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+ }
+
+ #gamepad {
+   font-size: 2.5rem;
  }
 
  a:hover
  {
    color: #ff005b;
  }
+
+ li a {
+  color: white;
+}
 
  #menuToggle
  {
@@ -122,7 +129,6 @@ h2 {
    margin-bottom: 5px;
    position: relative;
 
-   background: #cdcdcd;
    border-radius: 3px;
 
    z-index: 1;
@@ -148,7 +154,6 @@ h2 {
  {
    opacity: 1;
    transform: rotate(45deg) translate(-2px, -1px);
-   background: #cdcdcd;
  }
 
  #menuToggle input:checked ~ span:nth-last-child(3)
@@ -192,6 +197,4 @@ h2 {
    transform: none;
  }
 
-li a {
-  color: white;
-}
+
