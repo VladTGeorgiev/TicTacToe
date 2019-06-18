@@ -29,11 +29,7 @@ class UsersController < ApplicationController
     @loses = @user.loses.length
     @draws = @user.draws.length
     @total = @wins + @loses + @draws
-    if @total == 0
-      @ratio = "N/A"
-    else
-      @ratio = (@wins.to_f/@total.to_f).round(2)
-    end
+    @ratio = @user.ratio ? "#{@user.ratio}%" : "N/A"
   end
 
   def edit

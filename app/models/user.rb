@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   def ratio
     if total.length == 0
-      0
+      nil
     else
       (wins.length.to_f/total.length.to_f).round(2)
     end
