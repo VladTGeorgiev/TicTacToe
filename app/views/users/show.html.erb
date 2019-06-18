@@ -1,3 +1,27 @@
-<h1>This is a personal page of <%= @user.username %></h1>
+<h1>This is the personal page of <%= @user.username %></h1>
 
-
+<div class="stats">
+  <h2 class="">Here are their stats:</h2>
+        <div class="stats-cards-wrapper">
+            <div class="stats-card-1">
+                <h2><b>Win: </b></h2>
+                    <p><%= @user.wins.count %></p><br>
+            </div>
+            <div class="stats-card-2">
+                <h2><b>Loss:</b></h2>
+                    <p><%= @user.loses.count %></p><br>
+            </div>
+            <div class="stats-card-3">
+                <h2><b>Draw:</b></h2>
+                    <p><%= @user.draws.count %></p><br>
+            </div>
+            <div class="stats-card-4">
+                <h2><b>Total:</b></h2>
+                    <p><%= @user.total.count %></p><br>
+            </div>
+            <div class="stats-card-5">
+                <h2><b>Success ratio:</b></h2>
+                    <p><%= @user.ratio %>%</p><br>
+            </div>
+        </div>
+</div>
