@@ -9,6 +9,13 @@
   Top 5 loosers :(
       <% @top_5_loosers.each do |user| %>
       <%= user.username %>
-      <%= user.wins.count %>
+      <%= user.loses.count %>
+  <% end%>
+</div>
+<div>
+  Best ratio :(
+      <% @best_ratio_players.each do |user| %>
+      <%= user.username %>
+      <%= user.ratio.round(2) %>
   <% end%>
 </div>
