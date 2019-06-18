@@ -1,4 +1,4 @@
-<h1>This is a personal space of <%= @user.username %></h1>
+<h1>This is your personal page.</h1>
 <p>here will be different cool things and settings </p>
 <% if @cont_room %>
   <%= link_to "Continue a game", room_path(@cont_room)%>
@@ -9,6 +9,7 @@
 <%= link_to 'Edit user', edit_user_path(curr_user) %>
 <br>
 
+<div class="main-container">
 <table>
   <tr>
     <td>Win:</td>
@@ -26,5 +27,10 @@
     <td>Total:</td>
     <td><%= @total %></td>
   </tr>
+    <tr>
+    <td>Your success ratio:</td>
+    <td><%= @ratio.round(2) %>%</td>
+  </tr>
 </table>
+</div>
 

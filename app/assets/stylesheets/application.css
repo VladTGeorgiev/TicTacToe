@@ -35,25 +35,25 @@
 
  body
  {
-   margin: 0;
-   padding: 0;
-
-   background: #232323;
-   color: #cdcdcd;
-   font-family: "Avenir Next", "Avenir", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Avenir Next", "Avenir", sans-serif;
+  height: 100vh;
+  background: #000;
  }
 
  a
  {
-   text-decoration: none;
-   color: #232323;
-
-   transition: color 0.3s ease;
+  text-shadow: 0 0 20px #ff005b;
+  color: #fff;
+  text-decoration: none;
+  margin: 0;
+  padding: 0 20px;
  }
 
  a:hover
  {
-   color: tomato;
+   color: #ff005b;
  }
 
  #menuToggle
@@ -120,7 +120,7 @@
  {
    opacity: 1;
    transform: rotate(45deg) translate(-2px, -1px);
-   background: #232323;
+   background: #cdcdcd;
  }
 
  #menuToggle input:checked ~ span:nth-last-child(3)
@@ -142,7 +142,7 @@
    padding: 50px;
    padding-top: 125px;
 
-   background: #ededed;
+   background: #000;
    list-style-type: none;
    -webkit-font-smoothing: antialiased;
 
