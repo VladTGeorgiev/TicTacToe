@@ -34,4 +34,18 @@ class User < ApplicationRecord
   def curr_room
     rooms.find(&:active?)
   end
+
+  def total
+    wins + loses + draws
+  end
+
+  def ratio
+    if total.length == 0
+      0
+    else
+      (wins.length.to_f/total.length.to_f).round(2)
+    end
+  end
+
+
 end
