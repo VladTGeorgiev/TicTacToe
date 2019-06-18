@@ -1,5 +1,6 @@
 <h1>This is your personal page.</h1>
 <p>here will be different cool things and settings </p>
+<%= render "users/user_header" if curr_user %>
 <% if @cont_room %>
   <%= link_to "Continue a game", room_path(@cont_room)%>
 <% end %>
@@ -33,4 +34,3 @@
   </tr>
 </table>
 </div>
-
