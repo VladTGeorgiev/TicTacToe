@@ -1,5 +1,5 @@
 <h1>Tic Tac Toe</h1>
-<%= link_to "go back", home_path%>
+<%= link_to "Go back", home_path%>
 <h1><%= flash[:message] if flash[:message]%></h1>
 <% if flash[:errors]%>
   <% flash[:errors].each do |error|%>
@@ -8,7 +8,7 @@
 <% end %>
 
 
-<h1><%= "Waiting for the other player, please refresh" unless (@your_turn || !@active)%></h1>
+<h2><%= "Waiting for the other player, please refresh" unless (@your_turn || !@active)%></h2>
 
 <%= link_to_if @active, "Concede", concede_path(@room), method: :post%>
 

@@ -7,13 +7,23 @@
     <script src="https://kit.fontawesome.com/8ca52b66ba.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'tictactoe', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-      <%= render "partials/side_menu"%>
 
+  <%= render "partials/side_menu" if curr_user %>
+
+    <div class="main-container">
       <%= render "users/user_header" if curr_user %>
-    <%= yield %>
+      <div class="errors">
+        <% if flash[:errors] %>
+          <% flash[:errors].each do |error| %>
+            <%= error %>
+          <% end %>
+        <% end %>
+      </div>
+      <br>
+      <%= yield %>
+    <div>
   </body>
 </html>
