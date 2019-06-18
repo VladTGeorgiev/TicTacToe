@@ -45,7 +45,6 @@ class User < ApplicationRecord
     else
       (wins.length.to_f/total.length.to_f).round(2)
     end
-      # wins.length.to_f/total
   end
 
 
