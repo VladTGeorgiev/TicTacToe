@@ -40,6 +40,26 @@
 
 }
 
+p {
+  margin: 1%;
+}
+
+h2 {
+  margin-bottom: 10%;
+  text-shadow: 0 0 20px #00b3ff;
+}
+.leaderboard-cards-wrapper {
+  width: 100%;
+  margin: auto;
+}
+
+.leaderboard_card{
+  box-shadow: 0, 0, 25px, 10px rgba(241, 239, 241, 0.6);
+  width: 30%;
+  float: left;
+  margin: 1%;
+}
+
  body
  {
   background-image: url("wood_bg.jpg");
@@ -47,7 +67,7 @@
   margin: 0;
   padding: 0;
   font-family: "Avenir Next", "Avenir", sans-serif;
-
+  color: #cdcdcd;
  }
 
  a
@@ -145,12 +165,13 @@
  #menu
  {
    position: absolute;
-   width: 300px;
+   width: 15vw;
+   height: 100vh;
    margin: -100px 0 0 -50px;
    padding: 50px;
    padding-top: 125px;
 
-   background: #000;
+   background: rgba(0, 0, 0, 0.3);
    list-style-type: none;
    -webkit-font-smoothing: antialiased;
 

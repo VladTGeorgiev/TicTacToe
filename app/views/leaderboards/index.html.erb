@@ -1,21 +1,29 @@
-<div>
-  Top 5 winners :)
-      <% @top_5_players.each do |user| %>
-      <%= user.username %>
-      <%= user.wins.count %>
-  <% end%>
-</div>
-<div>
-  Top 5 loosers :(
-      <% @top_5_loosers.each do |user| %>
-      <%= user.username %>
-      <%= user.loses.count %>
-  <% end%>
-</div>
-<div>
-  Best ratio :(
-      <% @best_ratio_players.each do |user| %>
-      <%= user.username %>
-      <%= user.ratio.round(2) %>
-  <% end%>
+<div class="leaderboard-cards-wrapper">
+  <div class="leaderboard_card">
+    <div class="lc-c">
+      <h2><b>Top 5 winners:</b></h2>
+          <% @top_5_players.each do |user| %>
+          <p><%= link_to user.username, user_path(user) %></p>
+          <p><%= user.wins.count %></p><br>
+      <% end%>
+      </div>
+  </div>
+  <div class="leaderboard_card">
+    <div class="lc-c">
+      <h2><b>Top 5 loosers:</b></h2>
+          <% @top_5_loosers.each do |user| %>
+          <p><%= link_to user.username, user_path(user) %></p>
+          <p><%= user.loses.count %></p><br>
+      <% end%>
+    </div>
+  </div>
+  <div class="leaderboard_card">
+    <div class="lc-c">
+      <h2><b>Best ratio:</b></h2>
+          <% @best_ratio_players.each do |user| %>
+          <p><%= link_to user.username, user_path(user) %></p>
+          <p><%= user.ratio.round(2) %></p><br>
+      <% end%>
+    </div>
+  </div>
 </div>
