@@ -4,6 +4,11 @@ img {
   object-position: 25% 15%;
   width: 100%;
 }
+
+#sign-up-title {
+
+}
+
  #image_wrapper {
    object-fit: cover;
 width: 100%;
@@ -17,12 +22,13 @@ height: 100%;
   position: absolute;
 position: absolute;
 top: 55%;
-left: 41%;
+left: 44%;
 margin-top: -50px;
 margin-left: -50px;
 /* width: 100px; */
 /* height: 100px; */
 opacity: .7;
-text-shadow: 0 0 20px #ff005b;
+text-shadow: 0 0 20px #4214fd,
+             0 0 40px #4214fd;
 color: #fff;
 }

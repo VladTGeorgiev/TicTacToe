@@ -3,23 +3,29 @@
     <%=image_tag("man_back")%>
   </div>
   <div id="signup_text">
-    <h1>Sign Up</h1>
+    <h1 id="sign-up-title">Sign Up</h1>
     <%= form_for @user do |f|%>
-    <p>
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </p>
+    <table>
+      <tr>
+        <td><%= f.label :username %></td>
+        <td><%= f.text_field :username %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :password %></td>
+        <td><%= f.password_field :password %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :confirm_password %></td>
+        <td><%= f.password_field :confirm_password %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "Sign Up"%></td>
+      </tr>
+    </table>
 
-    <p>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </p>
 
-    <p>
-      <%= f.label :confirm_password %>
-      <%= f.password_field :confirm_password %>
-      <%= f.submit "Sign Up"%>
-    </p>
+
     <% end %>
   </div>
 </div>
