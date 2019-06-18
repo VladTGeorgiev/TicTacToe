@@ -12,7 +12,7 @@
 
   <body>
 
-  <%= render "partials/side_menu"%>
+  <%= render "partials/side_menu" if curr_user %>
 
     <div class="main-container">
       <div class="errors">
@@ -22,7 +22,6 @@
           <% end %>
         <% end %>
       </div>
-      <%= render "users/user_header" if curr_user %>
       <br>
       <%= yield %>
     <div>
