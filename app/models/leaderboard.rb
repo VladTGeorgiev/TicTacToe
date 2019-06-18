@@ -8,7 +8,10 @@ class Leaderboard < ApplicationRecord
     end
 
     def best_ratio
-        User.all.sort_by{|user| user.ratio}.reverse.first(5)
+        arr = User.all.sort_by do |user|
+          user.ratio || 0
+        end
+        arr.reverse.first(5)
     end
 
 end

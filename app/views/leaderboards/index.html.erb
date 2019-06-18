@@ -23,7 +23,7 @@
       <h2><b>Best ratio:</b></h2>
           <% @best_ratio_players.each do |user| %>
           <p><%= link_to user.username, user_path(user) %></p>
-          <p><%= user.ratio.round(2) %></p><br>
+          <p><%= user.ratio ? "#{(user.ratio * 100).round}%" : "N/A" %></p><br>
       <% end%>
     </div>
   </div>
