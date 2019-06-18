@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :users
   get "/home", to: "users#home", as: "home"
   get "tictactoe/info", to: "tictactoe#info", as: "tictactoe_info"
+  get "/about", to: "welcome#about", as: "about"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

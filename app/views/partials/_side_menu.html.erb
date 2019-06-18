@@ -7,8 +7,7 @@
       <%= link_to "<li>Leaderboard</li>".html_safe, leaderboards_path%>
       <%= link_to "<li>Previous Games</li>".html_safe, rooms_path%>
       <%= link_to "<li>Info</li>".html_safe, tictactoe_info_path%>
-      <a href="#"><li>Info</li></a>
-      <a href="#"><li>About</li></a>
+      <%= link_to "<li>About</li>".html_safe, about_path%>
       <%=link_to("<li>Log out</li>".html_safe, logout_path, method: :delete) %>
     </ul>
   </div>

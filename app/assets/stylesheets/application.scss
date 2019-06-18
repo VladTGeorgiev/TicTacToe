@@ -90,7 +90,9 @@ h1, h2 {
  body
  {
   background-image: url("wood_bg.jpg");
+  background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   margin: 0;
   padding: 0;
   font-family: "Avenir Next", "Avenir", sans-serif;
