@@ -1,10 +1,8 @@
 
 <div id="login_card">
-  <div id="image_wrapper">
-    <%=image_tag("man_back")%>
-  </div>
   <div id="login_text">
     <h1 id="login-title"></h1>
+    <div class="b-slide"></div>
     <%= form_for @user, url: login_path do |f|%>
     <table>
       <tr>
