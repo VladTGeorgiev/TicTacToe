@@ -4,7 +4,7 @@ class Leaderboard < ApplicationRecord
     end
 
     def top_5_loosers
-        User.all.{|user| user.loses.length}.reverse[0..4]
+        User.all.sort_by{|user| user.loses.length}.reverse.first(5)
     end
 
     def best_ratio
