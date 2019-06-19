@@ -1,9 +1,9 @@
 class HardAi
-  def calc_best(board)
+  def move(board)
     choice = nil
     value = -100
-    board.each do |pos|
-      if pos.nil?
+    board.each_with_index do |check, pos|
+      if check.nil?
         pos_val = min_max(pos, board, "1")
         if pos_val > value
           choice = pos
@@ -11,13 +11,9 @@ class HardAi
         end
       end
     end
-
-    best_choice = nil
-    choices.each do |choice|
-      return 10 if Tictactoe.new.won?(choice)
-      return 0 if Tictactoe.new.draw?(choice)
-      return calc_best(choice) - 1
-    end
+    h = {}
+    h[choice] = "1"
+    h
   end
 
 
@@ -27,14 +23,19 @@ class HardAi
     if player == "1"
       return 10 if won_by?(board, player)
     else
-      return -10 if won_by(board, player)
+      return -10 if won_by?(board, player)
     end
     return 0 if draw?(board)
-    best_move = -100
-    board.each do |pos|
-      if pos.nil?
-        move = min_max(pos, board, (player == "1" ? "0" : "1")) - 1
-        best_move = move if move > best_move
+    choice = nil
+    val = nil
+    board.each_with_index do |check, pos|
+      if check.nil?
+        if choice.nil?
+          choice = pos
+          val = min_max(pos, board, (player == "1" ? "0" : "1"))
+        else
+          choice = 
+        end
       end
     end
     return best_move

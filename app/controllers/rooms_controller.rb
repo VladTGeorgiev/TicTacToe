@@ -43,7 +43,7 @@ class RoomsController < ApplicationController
       game.next_turn(selections)
       game.next_player unless game.over?
       if room.opponent.ai
-        selections = EasyAi.new.move(game.boxes)
+        selections = HardAi.new.move(game.boxes)
         game.next_turn(selections)
         game.next_player unless game.over?
       end
