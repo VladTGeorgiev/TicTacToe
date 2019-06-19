@@ -1,5 +1,5 @@
 <h1>
-  Hello, <%= curr_user %>!
+  Hello, <%= @name %>!
   <%= image_tag(@user.avatar.variant(resize: "200x200!")) if @user.avatar.attached? %>
 
 </h1>
