@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 3}
   has_secure_password
 
+
   def rooms
     self.hosted_rooms + self.visited_rooms
   end

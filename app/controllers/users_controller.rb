@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
   def home
     @user = User.find_by(username: curr_user)
+    @name = @user.alias || @user.first_name || @user.username
     @cont_room = @user.curr_room
     @wins = @user.wins.length
     @loses = @user.loses.length
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
 
   def update
       @user = User.find_by(username: curr_user)
-      @user.update(password: params[:user][:password], avatar: params[:user][:avatar])
+      @user.update(params.require(:user).permit(:avatar, :password, :first_name, :last_name, :alias))
       redirect_to home_path
   end
 
