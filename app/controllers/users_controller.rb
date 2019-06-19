@@ -43,8 +43,8 @@ class UsersController < ApplicationController
 
   def update
       @user = User.find_by(username: curr_user)
-      @user.update(password: params[:user][:password])
-      redirect_to user_path(@user)
+      @user.update(password: params[:user][:password], avatar: params[:user][:avatar])
+      redirect_to home_path
   end
 
   def destroy
