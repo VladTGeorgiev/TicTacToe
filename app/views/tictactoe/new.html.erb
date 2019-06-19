@@ -20,8 +20,12 @@
         <%= "<br>".html_safe if n > 0 && n % 3 == 0%>
         <%= render partial: "tictactoe/box", locals: {num: n, box: @boxes[n]}%>
       <% end %>
+<<<<<<< HEAD
+      <div id="endturnbutton"><%= submit_tag "End Turn", disabled: !@your_turn%></div>
+=======
       <br>
       <%= submit_tag "Pass the turn", disabled: !@your_turn%>
+>>>>>>> dev
     <% end %>
   </div>
 
