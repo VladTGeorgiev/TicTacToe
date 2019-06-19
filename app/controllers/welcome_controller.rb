@@ -3,4 +3,8 @@ class WelcomeController < ApplicationController
   def index
     return redirect_to home_path if curr_user
   end
+
+  def about
+    render layout: "application"
+  end
 end
