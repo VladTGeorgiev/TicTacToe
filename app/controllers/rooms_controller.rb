@@ -41,11 +41,13 @@ class RoomsController < ApplicationController
     else
       game = room.tictactoe
       game.next_turn(selections)
-      game.next_player unless game.over?
-      if room.opponent.ai
-        selections = EasyAi.new.move(game.boxes)
-        game.next_turn(selections)
-        game.next_player unless game.over?
+      unless game.over?
+        game.next_player
+        if room.opponent.ai
+          selections = EasyAi.new.move(game.boxes)
+          game.next_turn(selections)
+          game.next_player unless game.over?
+        end
       end
     end
     redirect_to room_path(room)
