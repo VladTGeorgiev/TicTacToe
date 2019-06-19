@@ -1,4 +1,4 @@
-class EasyAi
+class EasyAI
   def calculate_choices(board)
     available_choices = []
     board.each_with_index {|mark, position| available_choices << position if mark.nil?}
