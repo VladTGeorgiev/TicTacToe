@@ -55,14 +55,23 @@ h1, h2, h3 {
 
 }
 
-
+.test {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+}
 .stats {
-  margin-top: 5rem;
+  box-shadow: 12px 12px 12px 12px rgba(0,0,0,0.4);
+	padding: 2em;
+  border-radius: 4px;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .stats-cards-wrapper {
   display: grid;
-  grid-template-columns: 15% 35% 35% 15%;
+  grid-template-columns: 5% 45% 45% 5%;
 }
 
 .stats-card-1 {
@@ -110,7 +119,7 @@ h1, h2, h3 {
 .card-about {
 	display: block;
 	width: 80%;
-	box-shadow: 0 12px 12px rgba(0,0,0,0.3);
+	box-shadow: 12px 12px 12px 12px rgba(0,0,0,0.4);
 	padding: 2em;
   border-radius: 4px;
 	.card-header {
