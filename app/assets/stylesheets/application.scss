@@ -41,6 +41,41 @@ h1, h2, h3 {
   text-shadow: 0 0 20px #00b3ff;
 }
 
+.hello {
+  display: grid;
+  grid-template-columns: 10% 15% 50% 15% 10%;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.hello h1 {
+  align-self: center;
+}
+
+.pr-img {
+  margin-left: 5%;
+  align-self: center;
+  margin-top: 2%;
+}
+
+.pr-img img {
+  border-radius: 50%;
+}
+
+.pr-img-l {
+  display: inline;
+}
+
+.pr-img-l img {
+  display: inline;
+  border-radius: 50%;
+}
+
 .test {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -75,12 +110,20 @@ h1, h2, h3 {
   grid-column-end: 3;
 }
 .stats-card-2-leaderboard {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.stats-card-3-leaderboard {
   grid-column-start: 1;
   grid-column-end: 2;
 }
-.stats-card-3-leaderboard {
+.stats-card-4-leaderboard {
   grid-column-start: 2;
   grid-column-end: 3;
+}
+.stats-card-5-leaderboard {
+  grid-column-start: 3;
+  grid-column-end: 4;
 }
 
 .stats-card-1-leaderboard-top-5 {
@@ -126,6 +169,11 @@ h1, h2, h3 {
   margin-top: 4rem;
   display: grid;
   grid-template-columns: 15% 35% 35% 15%;
+}
+
+.stats-card-4-leaderboard {
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 #card-1 {
