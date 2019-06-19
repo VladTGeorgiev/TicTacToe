@@ -15,16 +15,21 @@ class Leaderboard < ApplicationRecord
     end
 
     def total_games
-        User.all.each {|user| user.total}.count
+        Room.all.reject(&:active?).count 
     end
 
     def easy_ai_games_total
-        easy_ai = User.all.first
+        easy_ai = User.all.find_by(username: "EasyAi")
         easy_ai.total.count
     end
 
+    def hard_ai_games_total
+        hard_ai = User.all.find_by(username: "HardAi")
+        hard_ai.total.count
+    end
+
     def players_games_total
-        players_games_total = total_games - easy_ai_games_total
+        players_games_total = total_games - (easy_ai_games_total + hard_ai_games_total)
     end
 
 end
