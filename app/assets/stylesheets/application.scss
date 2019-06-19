@@ -163,16 +163,15 @@ h1, h2, h3 {
 	}
 	.card-footer {
 		text-align: right;
-		margin: 2rem 0 0 0;
+    margin: 2rem 0 0 0;
 		.card-button {
-			font-weight: lighter;
-			color: #bcadd6;
+      color: #cdcdcd;
 			padding:  .5em 1em;
-			border-radius: 8px;
-			font-size: 16px;
+			border-radius: 15px;
+      font-size: 1rem;
 			text-decoration: none;
 			&:hover {
-				color: darken(#ae9ccd, 5)
+				color: #ff005b
 			}
 		}
 	}
@@ -191,7 +190,18 @@ h1, h2, h3 {
   text-align: center;
  }
 
+.board {
+  box-shadow: 12px 12px 12px 12px rgba(0,0,0,0.4);
+	padding: 2em;
+  border-radius: 4px;
+}
+
+
+
 #endturnbutton input {
+  float: right;
+  margin-right: 15rem;
+  margin-top: 15rem;
   text-shadow: 0 0 20px #ff005b;
   border: none;
   background: none;
@@ -203,6 +213,12 @@ h1, h2, h3 {
   {
     color: #ff005b;
   }
+}
+
+#concede {
+  margin-top: 15rem;
+  margin-left: 15rem;
+  float: left;
 }
 
  a
@@ -357,10 +373,9 @@ h1, h2, h3 {
   display: flex;
   justify-content: center;
   flex-direction: column;
- /* width: 100px; */
- /* height: 100px; */
- text-shadow: 0 0 20px #00b3ff;
+  text-shadow: 0 0 20px #00b3ff;
  }
+
  #edit_text table {
   margin-left: auto;
   margin-right: auto;

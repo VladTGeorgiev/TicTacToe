@@ -5,9 +5,7 @@
     <h3><%= error %></h3>
   <% end %>
 <% end %>
-<div>
-<%= link_to("Concede", concede_path(@room), method: :post) if @active%>
-</div>
+
 <h2><%= "Waiting for the other player, please refresh" unless (@your_turn || !@active)%></h2>
 
 <div class="game">
@@ -17,12 +15,10 @@
         <%= "<br>".html_safe if n > 0 && n % 3 == 0%>
         <%= render partial: "tictactoe/box", locals: {num: n, box: @boxes[n]}%>
       <% end %>
-<<<<<<< HEAD
-      <div id="endturnbutton"><%= submit_tag "End Turn", disabled: !@your_turn%></div>
-=======
-      <br>
-      <%= submit_tag "Pass the turn", disabled: !@your_turn%>
->>>>>>> dev
-    <% end %>
   </div>
+</div>
+<div id="endturnbutton"><%= submit_tag "End Turn", disabled: !@your_turn%></div>
+<% end %>
+<div id="concede">
+    <%= link_to("Concede", concede_path(@room), method: :post) if @active%>
 </div>
