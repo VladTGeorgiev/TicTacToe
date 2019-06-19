@@ -11,3 +11,4 @@
 
 
 User.create(username: "EasyAi", password: "111", ai: true)
+User.create(username: "HardAi", password: "111", ai: true)
