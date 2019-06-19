@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :leaderboards, only: [:index]
   resources :rooms
   post "rooms/new", to: "rooms#create", as: "start_room"
