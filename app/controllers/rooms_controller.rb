@@ -48,6 +48,11 @@ class RoomsController < ApplicationController
           selections = cpu.move(game.boxes)
           game.next_turn(selections)
           game.next_player unless game.over?
+        else
+          loop do
+            sleep 1
+            break if room.reload.curr_player?(curr_user) || !room.reload.active?
+          end
         end
       end
     end

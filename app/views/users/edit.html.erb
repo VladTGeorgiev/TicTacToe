@@ -4,6 +4,10 @@
 
   <table>
     <tr>
+      <td><%= f.label :profile_pic %></td>
+      <td><%= f.file_field :avatar %></td>
+    </tr>
+    <tr>
       <td><%= f.label :password %></td>
       <td><%= f.password_field :password %></td>
     </tr>
@@ -13,7 +17,7 @@
     </tr>
     <tr>
       <td></td>
-      <td id="edit_button"><%= f.submit "Edit Password"%></td>
+      <td id="edit_button"><%= f.submit "Confirm Changes"%></td>
       <% end %>
     </tr>
     <tr>

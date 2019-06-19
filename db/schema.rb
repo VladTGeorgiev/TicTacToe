@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_002514) do
+ActiveRecord::Schema.define(version: 2019_06_19_140005) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "leaderboards", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -25,6 +46,22 @@ ActiveRecord::Schema.define(version: 2019_06_19_002514) do
     t.integer "opponent_id"
     t.index ["host_id"], name: "index_rooms_on_host_id"
     t.index ["opponent_id"], name: "index_rooms_on_opponent_id"
+  end
+
+  create_table "t_histories", force: :cascade do |t|
+    t.integer "tictactoe_id"
+    t.text "t0"
+    t.text "t1"
+    t.text "t2"
+    t.text "t3"
+    t.text "t4"
+    t.text "t5"
+    t.text "t6"
+    t.text "t7"
+    t.text "t8"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tictactoe_id"], name: "index_t_histories_on_tictactoe_id"
   end
 
   create_table "tictactoes", force: :cascade do |t|
