@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_131926) do
+ActiveRecord::Schema.define(version: 2019_06_19_002514) do
 
   create_table "leaderboards", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_131926) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "ai"
   end
 
 end

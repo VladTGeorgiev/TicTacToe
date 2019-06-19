@@ -8,3 +8,6 @@
 #test
 
 #test
+
+
+User.create(username: "EasyAi", password: "111", ai: true)
