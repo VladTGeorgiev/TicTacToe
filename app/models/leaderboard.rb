@@ -19,12 +19,12 @@ class Leaderboard < ApplicationRecord
     end
 
     def easy_ai_games_total
-        easy_ai = User.all.find_by(username: "EasyAi")
+        easy_ai = User.all.find_by(username: "EasyAI")
         easy_ai.total.count
     end
 
     def hard_ai_games_total
-        hard_ai = User.all.find_by(username: "HardAi")
+        hard_ai = User.all.find_by(username: "HardAI")
         hard_ai.total.count
     end
 
