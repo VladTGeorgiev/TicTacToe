@@ -1,17 +1,14 @@
 <h1>Tic Tac Toe</h1>
-<%= link_to "Go back", home_path%>
 <h2><%= flash[:message] if flash[:message]%></h2>
 <% if flash[:errors]%>
   <% flash[:errors].each do |error|%>
     <h3><%= error %></h3>
   <% end %>
 <% end %>
-
-
-<h2><%= "Waiting for the other player, please refresh" unless (@your_turn || !@active)%></h2>
-
+<div>
 <%= link_to("Concede", concede_path(@room), method: :post) if @active%>
-
+</div>
+<h2><%= "Waiting for the other player, please refresh" unless (@your_turn || !@active)%></h2>
 
 <div class="game">
   <div class="board">
@@ -24,5 +21,4 @@
       <%= submit_tag "Pass the turn", disabled: !@your_turn%>
     <% end %>
   </div>
-
 </div>
