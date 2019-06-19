@@ -37,7 +37,7 @@ h1 {
   font-size: 4rem;
 }
 
-h1, h2 {
+h1, h2, h3 {
   text-shadow: 0 0 20px #00b3ff;
 }
 
@@ -86,6 +86,61 @@ h1, h2 {
   grid-column-end: 4;
 }
 
+.container {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 15% 35% 35% 15%;
+}
+
+#card-1 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#card-2 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.photo {
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+
+.card-about {
+	display: block;
+	width: 80%;
+	box-shadow: 0 12px 12px rgba(0,0,0,0.3);
+	padding: 2em;
+  border-radius: 4px;
+	.card-header {
+		.card-title {
+      margin: 0;
+			font-size: 16px;
+		}
+	}
+	.card-body {
+			margin: 0;
+		.card-content {
+			line-height: 20px;
+		}
+	}
+	.card-footer {
+		text-align: right;
+		margin: 2rem 0 0 0;
+		.card-button {
+			font-weight: lighter;									
+			color: #bcadd6;
+			padding:  .5em 1em;
+			border-radius: 8px;
+			font-size: 16px;
+			text-decoration: none;
+			&:hover {
+				color: darken(#ae9ccd, 5)
+			}
+		}
+	}
+}
 
  body
  {
