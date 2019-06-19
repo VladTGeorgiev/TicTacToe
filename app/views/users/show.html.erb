@@ -1,4 +1,14 @@
-<h1>This is the personal page of <%= @user.username %></h1>
+<div class="hello">
+  <div class="parent">
+    <h1>
+      This is the personal page of <%= @user.username %>!  
+    </h1>
+    <div class="pr-img">
+      <%= image_tag(@user.avatar.variant(resize: "100x100!")) if @user.avatar.attached? %>
+    </div>
+  </div>
+</div>
+
 <div class="test">
     <div class="stats">
     <h2 class="">Here are their stats:</h2>
