@@ -1,13 +1,18 @@
 class HardAi
   def move(board)
     choice = nil
-    value = -100
+    val = nil
     board.each_with_index do |check, pos|
       if check.nil?
-        pos_val = min_max(pos, board, "1")
-        if pos_val > value
+        new_val = min_max(pos, board, "1")
+        if choice.nil?
           choice = pos
-          value = pos_val
+          val = new_val
+        else
+          if new_val > val
+            choice = pos
+            val = new_val
+          end
         end
       end
     end
@@ -30,15 +35,19 @@ class HardAi
     val = nil
     board.each_with_index do |check, pos|
       if check.nil?
+        new_val = min_max(pos, board, (player == "1" ? "0" : "1")) + 1
         if choice.nil?
           choice = pos
-          val = min_max(pos, board, (player == "1" ? "0" : "1"))
+          val = new_val
         else
-          choice = 
+          if new_val < val
+            choice = pos
+            val = new_val
+          end
         end
       end
     end
-    return best_move
+    return val
   end
 
   def draw?(board)
