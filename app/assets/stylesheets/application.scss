@@ -71,14 +71,32 @@ h1, h2, h3 {
 }
 
 .stats-card-1-leaderboard {
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-.stats-card-2-leaderboard {
   grid-column-start: 2;
   grid-column-end: 3;
 }
+.stats-card-2-leaderboard {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
 .stats-card-3-leaderboard {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.stats-card-1-leaderboard-top-5 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.stats-card-2-leaderboard-top-5 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.stats-card-3-leaderboard-top-5 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.stats-card-4-leaderboard {
   grid-column-start: 3;
   grid-column-end: 4;
 }

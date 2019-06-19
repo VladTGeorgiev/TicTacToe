@@ -1,9 +1,9 @@
 <h1>Tic Tac Toe</h1>
 <%= link_to "Go back", home_path%>
-<h1><%= flash[:message] if flash[:message]%></h1>
+<h2><%= flash[:message] if flash[:message]%></h2>
 <% if flash[:errors]%>
   <% flash[:errors].each do |error|%>
-    <h4><%= error %></h4>
+    <h3><%= error %></h3>
   <% end %>
 <% end %>
 
@@ -20,6 +20,7 @@
         <%= "<br>".html_safe if n > 0 && n % 3 == 0%>
         <%= render partial: "tictactoe/box", locals: {num: n, box: @boxes[n]}%>
       <% end %>
+      <br>
       <%= submit_tag "Pass the turn", disabled: !@your_turn%>
     <% end %>
   </div>
