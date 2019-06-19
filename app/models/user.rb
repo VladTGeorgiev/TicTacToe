@@ -10,6 +10,7 @@ class User < ApplicationRecord
   end
 
   def playing?
+    return false if self.ai
     self.rooms.map(&:status).any? {|status| status == "active"}
   end
 
