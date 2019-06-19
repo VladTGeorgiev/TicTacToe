@@ -21,6 +21,11 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+    @wins = @user.wins.length
+    @loses = @user.loses.length
+    @draws = @user.draws.length
+    @total = @wins + @loses + @draws
+    @ratio = @user.ratio ? "#{@user.ratio}%" : "N/A"
   end
   def home
     @user = User.find_by(username: curr_user)
