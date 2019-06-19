@@ -44,7 +44,7 @@ class RoomsController < ApplicationController
       unless game.over?
         game.next_player
         if room.opponent.ai
-          cpu = room.opponent.username == "HardAi" ? HardAi.new : EasyAi.new
+          cpu = room.opponent.username.constantize.new
           selections = cpu.move(game.boxes)
           game.next_turn(selections)
           game.next_player unless game.over?

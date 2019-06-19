@@ -10,5 +10,6 @@
 #test
 
 
-User.create(username: "EasyAi", password: "111", ai: true)
-User.create(username: "HardAi", password: "111", ai: true)
+User.create(username: "EasyAI", password: "111", ai: true)
+User.create(username: "MediumAI", password: "111", ai: true)
+User.create(username: "HardAI", password: "111", ai: true)
