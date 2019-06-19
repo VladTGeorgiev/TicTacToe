@@ -41,20 +41,6 @@ h1, h2, h3 {
   text-shadow: 0 0 20px #00b3ff;
 }
 
-.leaderboard-cards-wrapper {
-  width: 100%;
-  margin: auto;
-  margin-top: 2rem;
-  flex: left;
-}
-
-.leaderboard_card{
-  width: 30%;
-  float: left;
-  margin: 1%;
-
-}
-
 .test {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -72,6 +58,29 @@ h1, h2, h3 {
 .stats-cards-wrapper {
   display: grid;
   grid-template-columns: 5% 45% 45% 5%;
+}
+
+.stats-cards-wrapper-leaderboard {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+}
+
+.leaderboard-title {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.stats-card-1-leaderboard {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.stats-card-2-leaderboard {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.stats-card-3-leaderboard {
+  grid-column-start: 3;
+  grid-column-end: 4;
 }
 
 .stats-card-1 {
@@ -161,6 +170,7 @@ h1, h2, h3 {
   padding: 0;
   font-family: "Avenir Next", "Avenir", sans-serif;
   color: #cdcdcd;
+  text-align: center;
  }
 
  a

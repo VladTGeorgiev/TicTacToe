@@ -14,4 +14,17 @@ class Leaderboard < ApplicationRecord
         arr.reverse.first(5)
     end
 
+    def total_games
+        User.all.each {|user| user.total}.count
+    end
+
+    def easy_ai_games_total
+        easy_ai = User.all.first
+        easy_ai.total.count
+    end
+
+    def players_games_total
+        players_games_total = total_games - easy_ai_games_total
+    end
+
 end
