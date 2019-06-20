@@ -5,7 +5,7 @@
   <table>
     <tr>
       <td><%= f.label :profile_pic %></td>
-      <td><%= f.file_field :avatar %></td>
+      <td><%= f.file_field :avatar, value: @user.avatar %></td>
     </tr>
     <tr>
       <td><%= f.label :profile_name %></td>

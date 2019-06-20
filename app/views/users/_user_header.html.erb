@@ -1,11 +1,10 @@
 <div class="hello">
   <div class="parent">
     <h1>
-      Hello, <%= curr_user %>!  
+      Hello, <%= @user.first_name || curr_user %>!  
     </h1>
     <div class="pr-img">
       <%= image_tag(@user.avatar.variant(resize: "100x100!")) if @user.avatar.attached? %>
     </div>
   </div>
 </div>
-
