@@ -5,6 +5,13 @@
 input[type="checkbox"]:not([disabled="disabled"]):hover {
   &:after {
     content: "⑊";
-    color: #00b3ff;;
+    color: #00b3ff;
+    text-shadow: 0 0 5px #00b3ff,
+                 0 0 20px #00b3ff;
   }
+}
+
+:checked:after {
+   content: "⑊";
+   color: #00b3ff;
 }
