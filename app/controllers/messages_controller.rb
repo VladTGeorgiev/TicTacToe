@@ -9,12 +9,25 @@ class MessagesController < ApplicationController
       options1[:from] = @from
       options2[:to] = @from
     end
-    @messages = Message.where(options1)
-    @messages += Message.where(options2)
+    @messages = Message.where(options1).or(Message.where(options2))
+    @conversations = Message.where(to: @user).map(&:from)
+    @conversations += Message.where(from: @user).map(&:to)
+    @conversations.uniq!
+    @others = User.all - @conversations
 
   end
 
   def new
+  end
+
+  def add
+    flash[:add_conversation] = true
+    redirect_to messages_path
+  end
+
+  def connect
+    Message.create(from: get_user, to_id: params[:to_id], title: "connection")
+    redirect_to messages_path
   end
 
   def create

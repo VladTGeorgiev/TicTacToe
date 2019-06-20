@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get "messages", to: "messages#home", as: "messages"
   post "messages", to: "messages#create"
+  post "connect", to: "messages#connect", as: "connect"
+  post "add/form", to: "messages#add", as: "add_form"
   post "messages/:id", to: "messages#show", as: "show_messages"
   resources :leaderboards, only: [:index]
   resources :rooms
