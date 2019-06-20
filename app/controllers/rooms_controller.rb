@@ -56,6 +56,7 @@ class RoomsController < ApplicationController
         end
       end
     end
+    flash[:again] = true if !room.reload.active?
     redirect_to room_path(room)
   end
 

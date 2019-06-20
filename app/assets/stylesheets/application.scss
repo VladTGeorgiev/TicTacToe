@@ -428,3 +428,21 @@ h1, h2, h3 {
   margin-left: auto;
   margin-right: auto;
  }
+
+ #messages {
+   display: grid;
+   grid-template-columns: 37px 200px 200px 200px 37px;
+   width: 664px;
+ }
+ #messages div {
+  align-self: center;
+
+ }
+ #messages_field {
+   display: flex;
+   justify-content: center;
+ }
+
+ #play_again {
+   grid-column-start: 2;
+ }
