@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
     @conversations += Message.where(from: @user).map(&:to)
     @conversations.uniq!
     @others = User.all - @conversations
+    render layout: "messages"
   end
 
   def new

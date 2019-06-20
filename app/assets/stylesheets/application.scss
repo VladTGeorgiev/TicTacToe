@@ -514,8 +514,7 @@ h1, h2, h3 {
   grid-column-end: 4;
 }
 
-.message-inner {
-
+.message_inner {
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
 }
@@ -552,8 +551,33 @@ h1, h2, h3 {
 }
 
 #message_text{
+  margin-top: 3%;
+  width: 60%;
+  height: 3rem;
   background-color: #444;
   color: #cdcdcd;
   font-size:1rem;
   border-radius: 10px;
+}
+
+#messages_send input {
+  text-shadow: 0 0 20px #ff005b;
+  border: none;
+  background: none;
+  color: #cdcdcd;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-top: 2%;
+  margin-bottom: 3%;
+  &:hover
+  {
+    color: #ff005b;
+  }
+}
+
+#message_time {
+  font-size: small;
+  font-weight: lighter;
+  margin: 0;
+  margin-right: -0.1%;
 }

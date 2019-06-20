@@ -1,3 +1,4 @@
+
 <div class="messages_page">
   <div><%= flash[:messages] if flash[:messages]%></div>
     <div class="users">
@@ -19,15 +20,13 @@
         </div>
         <div class="messages">
 
+            <h3><b><%= link_to @user.username, user_path(@user)%></b></h3>
 
-
-          <h3><b><%= link_to @from.username, user_path(@from) %></b></h3>
 <div class="messages_form">
   <% if @from %>
     <%= form_for Message.new do |f|%>
 
     <p>
-      <%= f.label :text%>
       <%= f.text_area :text%>
     </p>
     <p>
@@ -36,24 +35,39 @@
     <p>
       <%= f.hidden_field :to_id, value: @from.id%>
     </p>
-    <p id="message-submit">
+    <p id="messages_send">
       <%= f.submit "Send"%>
     </p>
     <% end %>
   <% end %>
 </div>
           <div class="message-inner">
-          <% if @from%>
+
+          <% if @from %>
             <% @messages.each do |message| %>
-              <p class=<%= message.from == @user ?  "from" : "to" %>>
+              <div class=<%= message.from == @user ?  "from" : "to" %>>
               <%= message.title %>
-              <%= message.text %></p>
+              <%= message.text %>
+              <p id="message_time">sent at <%= message.created_at.strftime("%T"+" on "+"%d %m %Y")%></p></div>
             <% end %>
           <% end %>
+          
+          <% if @from %>
+            <% @messages.each do |message| %>
+              <div class=<%= message.from == @user ?  "from" : "to" %>>
+              <%= message.title %>
+              <%= message.text %>
+              <p id="message_time">sent at <%= message.created_at.strftime("%T"+" on "+"%d %m %Y")%></p></div>
+            <% end %>
+          <% end %>
+
           </div>
 
     </div>
 </div>
+
+
+
 
 
 
