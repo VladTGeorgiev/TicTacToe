@@ -1,5 +1,20 @@
 <h1>Tic Tac Toe</h1>
-<h2><%= flash[:message] if flash[:message]%></h2>
+
+<div id="messages_field">
+  <div id="messages">
+    <div id="play_again">
+      <%= link_to("Concede", concede_path(@room), method: :post) if @active%>
+      <%= link_to "Play Again?", new_room_path if flash[:again]%>
+
+    </div>
+    <div id="status"><h2><%= flash[:message] if flash[:message]%></h2></div>
+    <div id="return_home">
+      <%= link_to "Exit", home_path if flash[:again]%>
+      <%= form_tag room_path(@room), method: :patch do%>
+        <%= submit_tag "End Turn", disabled: !@your_turn if @active && @your_turn%>
+    </div>
+  </div>
+</div>
 <% if flash[:errors]%>
   <% flash[:errors].each do |error|%>
     <h3><%= error %></h3>
@@ -10,15 +25,11 @@
 
 <div class="game">
   <div class="board">
-    <%= form_tag room_path(@room), method: :patch do%>
+
       <% (0..8).each do |n| %>
         <%= "<br>".html_safe if n > 0 && n % 3 == 0%>
         <%= render partial: "tictactoe/box", locals: {num: n, box: @boxes[n]}%>
       <% end %>
   </div>
 </div>
-<div id="endturnbutton"><%= submit_tag "End Turn", disabled: !@your_turn%></div>
 <% end %>
-<div id="concede">
-    <%= link_to("Concede", concede_path(@room), method: :post) if @active%>
-</div>

@@ -268,17 +268,13 @@ h1, h2, h3 {
 
 
 
-#endturnbutton input {
-  float: right;
-  margin-right: 15rem;
-  margin-top: 15rem;
+#return_home input {
   text-shadow: 0 0 20px #ff005b;
   border: none;
   background: none;
   color: #cdcdcd;
   text-decoration: none;
   font-size: 1.5rem;
-  margin-bottom: 2rem;
   &:hover
   {
     color: #ff005b;
@@ -464,4 +460,28 @@ h1, h2, h3 {
  #edit_text table {
   margin-left: auto;
   margin-right: auto;
+ }
+
+ #messages {
+   display: grid;
+   grid-template-columns: 37px 200px 200px 200px 37px;
+   width: 664px;
+ }
+ #messages div {
+  align-self: center;
+
+ }
+
+ #messages h2 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+ }
+ #messages_field {
+   display: flex;
+   justify-content: center;
+ }
+
+ #play_again {
+   grid-column-start: 2;
  }
