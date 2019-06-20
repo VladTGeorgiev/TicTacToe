@@ -45,6 +45,7 @@ class UsersController < ApplicationController
 
   def update
       @user = User.find_by(username: curr_user)
+  
       @user.update(params.require(:user).permit(:avatar, :password, :first_name, :last_name, :alias))
       redirect_to home_path
   end
