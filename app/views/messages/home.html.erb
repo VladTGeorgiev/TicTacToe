@@ -1,1 +1,17 @@
-Here is the Feed
+<div class="messages_page">
+    <div class="users">
+        <h1><b>All users</b></h1>
+        <% User.all.map do |user| %>
+            <p class="pr-img-l"><%= image_tag(user.avatar.variant(resize: "50x50!")) if user.avatar.attached? %></p>
+            <p><%= link_to user.username, user_path(user) %></p>
+        <%end%>
+        </div>
+        <div class="messages">
+            <h1><b>Messages</b></h1>
+            <% @messages.map do |message| %>
+                <%= message.title %>
+                <%= message.text %>
+            <% end %>
+        </div>
+    </div>
+</div>

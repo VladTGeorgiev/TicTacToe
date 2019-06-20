@@ -485,3 +485,18 @@ h1, h2, h3 {
  #play_again {
    grid-column-start: 2;
  }
+
+.messages_page {
+  display: grid;
+  grid-template-columns: 10% 30% 50% 10%;
+}
+
+.users {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.messages {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
