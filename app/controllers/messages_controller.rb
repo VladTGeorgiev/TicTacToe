@@ -2,7 +2,16 @@ class MessagesController < ApplicationController
   include ApplicationHelper
   def home
     @user = get_user
-    @messages = Message.where(to: @user)
+    options1 = {to: @user}
+    options2 = {from: @user}
+    if session[:from]
+      @from = User.find(session[:from])
+      options1[:from] = @from
+      options2[:to] = @from
+    end
+    @messages = Message.where(options1)
+    @messages += Message.where(options2)
+
   end
 
   def new
@@ -17,6 +26,12 @@ class MessagesController < ApplicationController
       add_error @message.errors.full_messages
       redirect_to messages_path
     end
+  end
+
+  def show
+    from = User.find(params[:id])
+    session[:from] = from.id
+    redirect_to messages_path
   end
 
   private

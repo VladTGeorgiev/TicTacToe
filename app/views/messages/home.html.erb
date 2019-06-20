@@ -1,41 +1,41 @@
 <div class="messages_page">
   <div><%= flash[:messages] if flash[:messages]%></div>
     <div class="users">
-        <h1><b>All users</b></h1>
+        <h1><b>Conversations</b></h1>
         <% User.all.map do |user| %>
             <p class="pr-img-l"><%= image_tag(user.avatar.variant(resize: "50x50!")) if user.avatar.attached? %></p>
-            <p><%= link_to user.username, user_path(user) %></p>
+            <p><%= link_to user.username, show_messages_path(user), method: :post %></p>
         <%end%>
         </div>
         <div class="messages">
+          <% if @from %>
             <h1><b>Messages</b></h1>
             <% @messages.each do |message| %>
-              <p><%= image_tag(message.from.avatar.variant(resize: "50x50!")) if message.from.avatar.attached? %>
+              <p>
               From: <%= link_to message.from.username, user_path(message.from) %>
               <%= message.title %>
               <%= message.text %></p>
             <% end %>
+          <% end %>
         </div>
     </div>
 </div>
 
-<%= form_for Message.new do |f|%>
-<p>
-  <%= f.label :title%>
-  <%= f.text_field :title%>
-</p>
-<p>
-  <%= f.label :text%>
-  <%= f.text_area :text%>
-</p>
-<p>
-  <%= f.label :select_user%>
-  <%= f.collection_select :to_id, User.all, :id, :username%>
-</p>
-<p>
-  <%= f.hidden_field :from_id, value: @user.id%>
-</p>
-<p>
-  <%= f.submit "Send Message"%>
-</p>
+<% if @from %>
+  <%= form_for Message.new do |f|%>
+
+  <p>
+    <%= f.label :text%>
+    <%= f.text_area :text%>
+  </p>
+  <p>
+    <%= f.hidden_field :from_id, value: @user.id%>
+  </p>
+  <p>
+    <%= f.hidden_field :to_id, value: @from.id%>
+  </p>
+  <p>
+    <%= f.submit "Send"%>
+  </p>
+  <% end %>
 <% end %>
