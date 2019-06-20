@@ -102,6 +102,7 @@ class RoomsController < ApplicationController
     room = get_room
     winner = (room.host == get_user ? "1" : "0")
     room.tictactoe.update(status: winner)
+    flash[:again] = true
     redirect_to room_path(room)
   end
 
