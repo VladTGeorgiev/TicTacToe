@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.create(params.require(:user).permit(:username, :password))
     if @user.valid?
       session[:username] = params[:user][:username]
+      # @user.update(avatar: image_url("images/default_image.png"))
       redirect_to home_path
     else
       flash[:errors] = @user.errors.full_messages
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     @loses = @user.loses.length
     @draws = @user.draws.length
     @total = @wins + @loses + @draws
-    @ratio = @user.ratio ? "#{@user.ratio}%" : "N/A"
+    @ratio = @user.ratio ? "#{(@user.ratio * 100).round}%" : "N/A"
   end
   def home
     @user = User.find_by(username: curr_user)

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, length: { minimum: 3 }
   validates :password, length: {minimum: 3}
   has_secure_password
+  before_create :default_image
 
 
   def rooms
@@ -48,6 +49,10 @@ class User < ApplicationRecord
     else
       (wins.length.to_f/total.length.to_f).round(2)
     end
+  end
+
+  def default_image
+    self.avatar.attach(io: File.open(Rails.root.join('app','assets', 'images', 'default_image.png')), filename: 'default-image.png', content_type: 'image/png')
   end
 
 

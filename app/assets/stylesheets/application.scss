@@ -425,13 +425,28 @@ h1, h2, h3 {
  }
 
  #edit_button input, #delete_button input {
+  text-shadow: 0 0 20px #ff005b;
+  border: none;
+  background: none;
+  color: #cdcdcd;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  &:hover
+  {
+    color: #ff005b;
+  }
+}
+
+ #edit_button-personal input, #delete_button-personal input {
    text-shadow: 0 0 20px #ff005b;
    border: none;
    background: none;
    color: #cdcdcd;
    text-decoration: none;
    font-size: 1.5rem;
-   margin-bottom: 2rem;
+   margin-top: 15%;
+   margin-left: -55%;
    &:hover
    {
      color: #ff005b;
