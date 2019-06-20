@@ -38,14 +38,14 @@ input[type="checkbox"]:checked, input[type="checkbox"]:hover {
   }
 }
 
-.player0:checked {
+.player0[disabled="disabled"] {
   &:after {
     content: "♥";
     color: #ff005b;
   }
 }
 
-.player1:checked {
+.player1[disabled="disabled"] {
   &:after {
     content: "⑊";
     color: #00b3ff;
