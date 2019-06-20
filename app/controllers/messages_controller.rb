@@ -1,22 +1,25 @@
 class MessagesController < ApplicationController
-  def index
-    @messages = Message.all
+  include ApplicationHelper
+  def home
+    @user = get_user
+    @messages = Message.where(to: @user)
   end
 
   def new
-    @message = Message.new
   end
 
   def create
     @message = Message.create(attr)
     if @message.valid?
-      redirect_to message_path(@message)
+      add_message "Your message was successfuly sent"
+      redirect_to messages_path
     else
-      flash[:errors] = @message.errors.full_messages
-      render :new
+      add_error @message.errors.full_messages
+      redirect_to messages_path
     end
   end
 
+  private
   def attr
     params.require(:message).permit(:title, :text, :from_id, :to_id)
   end

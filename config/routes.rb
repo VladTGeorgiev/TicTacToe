@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "messages", to: "messages#home", as: "messages"
+  post "messages", to: "messages#create"
   resources :leaderboards, only: [:index]
   resources :rooms
   post "rooms/new", to: "rooms#create", as: "start_room"
