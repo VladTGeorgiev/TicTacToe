@@ -496,14 +496,28 @@ h1, h2, h3 {
   grid-column-end: 3;
 }
 
+.messages h3 a {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.messages h3 {
+  margin-top: 0;
+}
+
 .messages {
+  margin-top: 2rem;
+  box-shadow: 12px 12px 12px 12px rgba(0,0,0,0.4);
+	padding: 2em;
+  border-radius: 4px;
   grid-column-start: 3;
   grid-column-end: 4;
 }
 
 .message-inner {
+
   display: grid;
-  grid-template-columns: 15% 35% 35% 15%;
+  grid-template-columns: 10% 40% 40% 10%;
 }
 
 .from {
@@ -522,4 +536,17 @@ h1, h2, h3 {
   margin-bottom: 4%;
   grid-column-start: 2;
   grid-column-end: 3;
+}
+
+#message-submit {
+  text-shadow: 0 0 20px #ff005b;
+  border: none;
+  background: none;
+  color: #cdcdcd;
+  text-decoration: none;
+  font-size: 1.5rem;
+  &:hover
+  {
+    color: #ff005b;
+  }
 }

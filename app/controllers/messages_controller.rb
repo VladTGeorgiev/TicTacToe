@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
     end
     @messages = Message.where(options1)
     @messages += Message.where(options2)
+    @messages.reverse!
 
   end
 

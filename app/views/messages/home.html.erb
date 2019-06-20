@@ -8,7 +8,7 @@
         <%end%>
         </div>
         <div class="messages">
-          <h1><b><%= link_to @from.username, user_path(@from) %></b></h1>
+          <h3><b><%= link_to @from.username, user_path(@from) %></b></h3>
 
           <div class="message-inner">
           <% if @from%>
@@ -36,7 +36,7 @@
   <p>
     <%= f.hidden_field :to_id, value: @from.id%>
   </p>
-  <p>
+  <p id="message-submit">
     <%= f.submit "Send"%>
   </p>
   <% end %>
