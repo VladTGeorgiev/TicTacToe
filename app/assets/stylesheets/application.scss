@@ -14,8 +14,30 @@
  *= require_self
  */
 
+ .select {
+  color: #444;
+  margin-top:2rem;
+}
+
+body {
+padding: 3rem;
+}
+
+ #opponent_select_button input {
+  text-shadow: 0 0 20px #ff005b;
+  border: none;
+  background: none;
+  color: #cdcdcd;
+  text-decoration: none;
+  font-size: 2.5rem;
+  margin-top: 3%;
+  &:hover
+  {
+    color: #ff005b;
+  }
+}
+
 .main-container {
-    margin-top: 3rem;
     text-align: center;
 }
 

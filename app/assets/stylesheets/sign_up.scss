@@ -18,19 +18,29 @@ body {
   justify-content: center;
 }
 
-
-#sign-up-title {
-
-}
-
-#sign_up_button input, #login_button input {
+#sign_up_button input {
   text-shadow: 0 0 20px #ff005b;
   border: none;
   background: none;
   color: #cdcdcd;
   text-decoration: none;
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin-left: -55%;
+  &:hover
+  {
+    color: #ff005b;
+  }
+}
+
+
+#login_button input {
+  text-shadow: 0 0 20px #ff005b;
+  border: none;
+  background: none;
+  color: #cdcdcd;
+  text-decoration: none;
+  font-size: 2.5rem;
+  margin-left: 15%;
   &:hover
   {
     color: #ff005b;
@@ -42,15 +52,21 @@ body {
 }
 
 
+
+  #signup_text .b-slide {
+    height: 70%
+  }
+
+  #login_text .b-slide {
+    height: 60%
+  }
+
 #signup_text, #login_text {
 line-height: 4rem;
-/* width: 100px; */
-/* height: 100px; */
 .b-slide {
   background-color: black;
   opacity: .65;
   position: absolute;
-  height: 80%;
   width: 100%;
   z-index: -1;
 }
