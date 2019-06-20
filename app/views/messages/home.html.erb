@@ -8,16 +8,18 @@
         <%end%>
         </div>
         <div class="messages">
-          <% if @from %>
-            <h1><b>Messages</b></h1>
+          <h1><b><%= link_to @from.username, user_path(@from) %></b></h1>
+
+          <div class="message-inner">
+          <% if @from%>
             <% @messages.each do |message| %>
-              <p>
-              From: <%= link_to message.from.username, user_path(message.from) %>
+              <p class=<%= message.from == @user ?  "from" : "to" %>>
               <%= message.title %>
               <%= message.text %></p>
             <% end %>
           <% end %>
-        </div>
+          </div>
+
     </div>
 </div>
 
@@ -39,3 +41,5 @@
   </p>
   <% end %>
 <% end %>
+
+
