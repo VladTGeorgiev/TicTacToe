@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-:checked, input[type="checkbox"]:not([disabled="disabled"]):hover {
+ :checked, input[type="checkbox"]:not([disabled="disabled"]):hover {
   &:after {
     content: "♥";
     color: #ff005b;
+    text-shadow: 0 0 20px #ff005b;
   }
 }
