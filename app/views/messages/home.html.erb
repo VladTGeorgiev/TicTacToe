@@ -20,7 +20,7 @@
         </div>
         <div class="messages">
 
-            <h3><b><%= link_to @user.username, user_path(@user)%></b></h3>
+        <h3><b><%= link_to @from.username, user_path(@from) %></b></h3>
 
 <div class="messages_form">
   <% if @from %>
@@ -36,34 +36,42 @@
       <%= f.hidden_field :to_id, value: @from.id%>
     </p>
     <p id="messages_send">
-      <%= f.submit "Send"%>
+      <%= f.submit "Send message"%>
     </p>
     <% end %>
   <% end %>
 </div>
-          <div class="message-inner">
 
-          <% if @from %>
-            <% @messages.each do |message| %>
-              <div class=<%= message.from == @user ?  "from" : "to" %>>
-              <%= message.title %>
-              <%= message.text %>
-              <p id="message_time">sent at <%= message.created_at.strftime("%T"+" on "+"%d %m %Y")%></p></div>
-            <% end %>
-          <% end %>
-          
-          <% if @from %>
-            <% @messages.each do |message| %>
-              <div class=<%= message.from == @user ?  "from" : "to" %>>
-              <%= message.title %>
-              <%= message.text %>
-              <p id="message_time">sent at <%= message.created_at.strftime("%T"+" on "+"%d %m %Y")%></p></div>
-            <% end %>
-          <% end %>
+<div class="message_inner">
+  <div class="from">
+    <% if @from %>
+      <% @messages.each do |message| %>
+        <div class="from-message">
+          <% if message.from == @user %>
+            <%= message.title %>
+            <%= message.text %>
+            <p id="message_time">sent at <%= message.created_at.strftime("%T"+" on "+"%d %m %Y")%></p>
+          <%end%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="to">
+    <% if @from %>
+      <% @messages.each do |message| %>
+        <div class="to-message">
+         <% if message.from != @user %>
+          <%= message.title %>
+          <%= message.text %>
+          <p id="message_time">sent at <%= message.created_at.strftime("%T"+" on "+"%d %m %Y")%></p>
+          <%end%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-          </div>
-
-    </div>
+  </div>
 </div>
 
 

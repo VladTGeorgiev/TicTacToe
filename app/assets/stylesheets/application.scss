@@ -516,25 +516,33 @@ h1, h2, h3 {
 
 .message_inner {
   display: grid;
-  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-columns: 5% 45% 45% 5%;
 }
 
 .from {
-  font-size: 1.25rem;
-  text-shadow: 0 0 20px #00b3ff;
-  text-align: end;
-  margin-bottom: 4%;
   grid-column-start: 3;
   grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 .to {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.from-message {
+  font-size: 1.25rem;
+  text-shadow: 0 0 20px #00b3ff;
+  text-align: end;
+  margin-bottom: 5%;
+}
+
+.to-message {
   font-size: 1.25rem;
   text-shadow: 0 0 20px #ff005b;
   text-align: start;
-  margin-bottom: 4%;
-  grid-column-start: 2;
-  grid-column-end: 3;
+  margin-bottom: 5%;
 }
 
 #message-submit {
