@@ -34,11 +34,15 @@ class MessagesController < ApplicationController
     @message = Message.create(attr)
     if @message.valid?
       add_message "Your message was successfuly sent"
-      redirect_to messages_path
     else
       add_error @message.errors.full_messages
-      redirect_to messages_path
     end
+    to = User.find(params[:message][:to_id])
+    if to.ai
+      text = ChatBot.new.talk
+      Message.create(to_id: params[:message][:from_id], from: to, text: text)
+    end
+    redirect_to messages_path
   end
 
   def show

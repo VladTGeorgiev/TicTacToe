@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
     opponent = get_opponent
     clear_errors
     if opponent == get_user
-      add_error "Congradulations, you played yourself"
+      add_error "Congratulations, you played yourself"
       return redirect_to new_room_path
     end
     if opponent.playing?
