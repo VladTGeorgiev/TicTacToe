@@ -14,7 +14,10 @@
  *= require_self
  */
 
- .select {
+
+
+
+.select {
   color: #444;
   margin-top:2rem;
 }
@@ -287,8 +290,7 @@ h1, h2, h3 {
   float: left;
 }
 
- a
- {
+ a {
   text-shadow: 0 0 20px #ff005b;
   color: #cdcdcd;
   text-decoration: none;
@@ -589,3 +591,22 @@ h1, h2, h3 {
   margin: 0;
   margin-right: -0.1%;
 }
+
+@media all and (min-width: 1024px) and (max-width: 1441px) { 
+  h1 {
+    font-size: 3rem;
+  }
+
+
+}
+ 
+@media all and (min-width: 768px) and (max-width: 1024px) { 
+  h1 {
+    font-size: 2rem;
+  }
+
+}
+ 
+@media all and (min-width: 480px) and (max-width: 768px) { }
+ 
+@media all and (max-width: 480px) { }
