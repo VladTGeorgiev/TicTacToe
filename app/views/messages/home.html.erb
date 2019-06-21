@@ -1,0 +1,75 @@
+
+<div class="messages_page">
+  <div><%= flash[:messages] if flash[:messages]%></div>
+    <div class="users">
+        <h1><b>Conversations</b></h1>
+        <% @conversations.each do |user| %>
+            <p class="pr-img-l"><%= image_tag(user.avatar.variant(resize: "50x50!")) if user.avatar.attached? %></p>
+            <p><%= link_to user.username, show_messages_path(user), method: :post %></p>
+        <%end%>
+        <% if flash[:add_conversation] %>
+          <%= form_tag connect_path do %>
+            <%= select_tag :to_id, options_from_collection_for_select(@others, :id, :username)%>
+            <%= submit_tag "Converse"%>
+          <% end %>
+        <% else %>
+          <%= link_to "+", add_form_path, method: :post %>
+        <% end%>
+
+
+        </div>
+        <div class="messages">
+  <% if @from %>
+        <h3><b><%= link_to @from.username, user_path(@from) %></b></h3>
+  <% end %>
+<div class="messages_form">
+  <% if @from %>
+    <%= form_for Message.new do |f|%>
+
+    <p>
+      <%= f.text_area :text%>
+    </p>
+    <p>
+      <%= f.hidden_field :from_id, value: @user.id%>
+    </p>
+    <p>
+      <%= f.hidden_field :to_id, value: @from.id%>
+    </p>
+    <p id="messages_send">
+      <%= f.submit "Send message"%>
+    </p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="message_inner">
+  <div class="from">
+    <% if @from %>
+      <% @messages.each do |message| %>
+        <div class="from-message">
+          <% if message.from == @user %>
+            <%= message.title %>
+            <%= message.text %>
+            <p id="message_time">sent at <%= message.created_at.strftime("%T"+" on "+"%d %m %Y")%></p>
+          <%end%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="to">
+    <% if @from %>
+      <% @messages.each do |message| %>
+        <div class="to-message">
+         <% if message.from != @user %>
+          <%= message.title %>
+          <%= message.text %>
+          <p id="message_time">sent at <%= message.created_at.strftime("%T"+" on "+"%d %m %Y")%></p>
+          <%end%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+  </div>
+</div>

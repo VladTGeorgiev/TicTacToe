@@ -31,6 +31,8 @@ module RoomsHelper
   end
 
   def create_a_room
-    Room.create(host: get_user, opponent: get_opponent).create_tictactoe(player: 0, status: "active")
+    room = Room.create(host: get_user, opponent: get_opponent)
+    room.create_tictactoe(player: 0, status: "active", boxes: Array.new(9))
+    room
   end
 end

@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_action :check_id, only: [:new, :create]
   def new
+    return redirect_to home_path if curr_user
     @user = User.new
+    render layout: "sign_up"
   end
 
   def create
@@ -18,6 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :username
+    session.delete :from
     redirect_to root_path
   end
 end

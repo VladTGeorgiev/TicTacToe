@@ -1,18 +1,28 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f|%>
-<p>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-</p>
-
-<p>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-</p>
-
-<p>
-  <%= f.label :confirm_password %>
-  <%= f.password_field :confirm_password %>
-  <%= f.submit "Sign Up"%>
-</p>
-<% end %>
+<div class="card_wrapper">
+<div id="signup_card">
+  <div id="signup_text">
+    <h1 id="sign-up-title">Experience the Future</h1>
+    <div class="b-slide"></div>
+    <%= form_for @user do |f|%>
+    <table>
+      <tr>
+        <td><%= f.label :username %></td>
+        <td><%= f.text_field :username %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :password %></td>
+        <td><%= f.password_field :password %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :confirm_password %></td>
+        <td><%= f.password_field :confirm_password %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td id="sign_up_button"><%= f.submit "Sign Up"%></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+</div>
+</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TicTacToe</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/8ca52b66ba.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'sign_up', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <%= render "partials/side_menu" if curr_user %>
+
+    <div class="main-container">
+      <div class="errors">
+        <% if flash[:errors] %>
+          <% flash[:errors].each do |error| %>
+            <%= error %>
+          <% end %>
+        <% end %>
+      </div>
+      <br>
+      <%= yield %>
+    <div>
+  </body>
+</html>

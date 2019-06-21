@@ -1,16 +1,18 @@
 <nav role="navigation">
   <div id="menuToggle">
     <input type="checkbox" />
-    <span></span>
-    <span></span>
-    <span></span>
+    <span><a class="fas fa-gamepad" id=gamepad></a></span>
     <ul id="menu">
       <%= link_to "<li>Home</li>".html_safe, home_path%>
-      <a href="#"><li>Leaderboard</li></a>
-      <a href="#"><li>Rooms</li></a>
-      <a href="#"><li>Info</li></a>
-      <a href="#"><li>About</li></a>
-      <%=link_to "<li>Log out</li>".html_safe, logout_path, method: :delete %>
+      <%= link_to "<li>Personal Settings</li>".html_safe, edit_user_path(curr_user) %>
+      <%= link_to "<li>Messages</li>".html_safe, messages_path %>
+      <%= link_to "<li>Leaderboard</li>".html_safe, leaderboards_path%>
+      <%= link_to "<li>Previous Games</li>".html_safe, rooms_path%>
+      <%= link_to "<li>Info</li>".html_safe, tictactoe_info_path%>
+      <%= link_to "<li>About</li>".html_safe, about_path%>
+      <%=link_to("<li>Log out</li>".html_safe, logout_path, method: :delete) %>
+
+
     </ul>
   </div>
 </nav>

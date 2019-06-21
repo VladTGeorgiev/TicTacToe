@@ -1,27 +1,40 @@
-<h1>This is a personal space of <%= @user.username %></h1>
-<p>here will be different cool things and settings </p>
-<% if @cont_room %>
-  <%= link_to "Continue a game", room_path(@cont_room)%>
-<% end %>
-<br>
-<%= link_to "Start a game", new_room_path %>
-<br>
-
-<table>
-  <tr>
-    <td>Win:</td>
-    <td><%= @wins %></td>
-  </tr>
-  <tr>
-    <td>Loss:</td>
-    <td><%= @loses %></td>
-  </tr>
-  <tr>
-    <td>Draw:</td>
-    <td><%= @draws %></td>
-  </tr>
-  <tr>
-    <td>Total:</td>
-    <td><%= @total %></td>
-  </tr>
-</table>
+<h1><%= render "users/user_header" if curr_user %></h1>
+<div>
+    <div>
+        <% if @cont_room %>
+        <%= link_to "Continue a game", room_path(@cont_room)%>
+        <% end %>
+    </div>
+    <br>
+    <div>
+        <%= link_to "Start a game", new_room_path %>
+    </div>
+    <br>
+</div>
+<div class="test">
+    <div class="stats">
+    <h2 class="">Here are your stats:</h2>
+        <div class="stats-cards-wrapper">
+            <div class="stats-card-1">
+                <h3><b>Win: </b></h3>
+                    <p><%= @wins %></p><br>
+            </div>
+            <div class="stats-card-2">
+                <h3><b>Loss:</b></h3>
+                    <p><%= @loses %></p><br>
+            </div>
+            <div class="stats-card-3">
+                <h3><b>Draw:</b></h3>
+                    <p><%= @draws %></p><br>
+            </div>
+            <div class="stats-card-4">
+                <h3><b>Total:</b></h3>
+                    <p><%= @total %></p><br>
+            </div>
+            <div class="stats-card-5">
+                <h3><b>Success ratio:</b></h3>
+                    <p><%= @ratio %></p><br>
+            </div>
+        </div>
+    </div>
+</div>

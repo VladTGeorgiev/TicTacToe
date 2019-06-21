@@ -1,69 +1,49 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import url("https://fonts.googleapis.com/css?family=Bad+Script");
-@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 
+$num_of_letters: 8;
+$glow_time: .5; // in seconds
+$iteration_delay: 0;
+
+
+@mixin letters {
+  @for $i from 1 through $num_of_letters {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * $glow_time}s;
+    }
+  }
+}
 body {
+  background-image: url("wood_bg.jpg");
+  background-size: cover;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #000;
-  font-family: "Bad Script", cursive;
+  font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
 .title{
-  font-size: 50px;
+  font-size: 80px;
   margin-right: 70px;
-  color: #111
+  color: #111;
+  padding-bottom: 60px;
 }
 
 .title span {
   display: table-cell;
   margin: 0;
   padding: 0;
-  -webkit-animation: glow 4.5s linear infinite;
-  transition-delay: 2s;
+  -webkit-animation: glow #{$iteration_delay + $glow_time * $num_of_letters }s linear infinite;
 }
-.title span:nth-child(1)
+.title span
 {
-  animation-delay: 0s;
+  @include letters
 }
-.title span:nth-child(2)
-{
-  animation-delay: 0.5s;
-}
-.title span:nth-child(3)
-{
-  animation-delay: 1s;
-}
-.title span:nth-child(4)
-{
-  animation-delay: 1.5s;
-}
-.title span:nth-child(5)
-{
-  animation-delay: 2s;
-}
-.title span:nth-child(6)
-{
-  animation-delay: 2.5s;
-}
-.title span:nth-child(7)
-{
-  animation-delay: 3s;
-}
-.title span:nth-child(8)
-{
-  animation-delay: 3.5s;
-}
-.title span:nth-child(9)
-{
-  animation-delay: 4s;
-}
+
 
 @-webkit-keyframes glow
 {
@@ -80,7 +60,7 @@ body {
                 0 0 300px #00b3ff,
                 0 0 400px #00b3ff;
   }
-  12%, 100%
+  #{100 / ($num_of_letters + ($iteration_delay / $glow_time))}%, 100%
   {
     color: #111;
     filter: blur(0px);
@@ -91,15 +71,10 @@ body {
 .neon {
   display: flex;
   flex-direction: column;
-
-}
-
-.w-wrapper {
-  padding-bottom: 80px;
+  padding-bottom: 70px;
 }
 
 .neon a{
-  font-family: "Qucksand", sans-serif;
   text-shadow: 0 0 20px #ff005b;
   color: #fff;
   text-decoration: none;
@@ -114,4 +89,14 @@ body {
   top: 0;
   left: 0;
   padding: 0 20px;
+}
+
+.wrapper {
+  width: 200px;
+  height: 50px;
+}
+
+a:hover
+{
+  color: #ff005b;
 }

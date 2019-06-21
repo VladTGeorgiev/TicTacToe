@@ -1,0 +1,82 @@
+body {
+  background-image: url(man_back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 13%;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
+}
+
+.card_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#sign_up_button input {
+  text-shadow: 0 0 20px #ff005b;
+  border: none;
+  background: none;
+  color: #cdcdcd;
+  text-decoration: none;
+  font-size: 2.5rem;
+  margin-left: -55%;
+  &:hover
+  {
+    color: #ff005b;
+  }
+}
+
+
+#login_button input {
+  text-shadow: 0 0 20px #ff005b;
+  border: none;
+  background: none;
+  color: #cdcdcd;
+  text-decoration: none;
+  font-size: 2.5rem;
+  margin-left: 15%;
+  &:hover
+  {
+    color: #ff005b;
+  }
+}
+
+#signup_card, #login_card {
+  position: absolute;
+}
+
+
+
+  #signup_text .b-slide {
+    height: 70%
+  }
+
+  #login_text .b-slide {
+    height: 60%
+  }
+
+#signup_text, #login_text {
+line-height: 4rem;
+.b-slide {
+  background-color: black;
+  opacity: .65;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+table {
+  opacity: 1;
+  text-shadow: 0 0 20px #4214fd;
+  font-size: 2rem;
+}
+input {
+  opacity: 1;
+  font-size: 2rem;
+  }
+}

@@ -15,6 +15,19 @@ class Room < ApplicationRecord
     self.tictactoe.status
   end
 
+  def versus(user)
+    return nil if user != host && user != opponent
+    user == host ? opponent : host
+  end
+
+  def won_by?(user)
+    return nil if user != host && user != opponent
+    return true if user == host && won_by_host?
+    return true if user == opponent && won_by_visitor?
+    false
+  end
+
+
   def active?
     self.tictactoe.status == "active"
   end

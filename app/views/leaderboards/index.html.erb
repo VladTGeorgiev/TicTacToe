@@ -1,14 +1,62 @@
-<div>
-  Top 5 winners :)
-      <% @top_5_players.each do |user| %>
-      <%= user.username %>
-      <%= user.wins.count %>
-  <% end%>
+<h1>Leaderboard stats:</h1>
+
+<div class="test">
+  <div class="stats">
+    <div class="stats-cards-wrapper-leaderboard">
+    <h2 class="leaderboard-title">Totals</h2>
+      <div class="stats-card-1-leaderboard">
+          <h3><b>Total games played:</b></h3>
+              <p><%= @total_games_played %></p><br>
+      </div>
+      <div class="stats-card-2-leaderboard">
+          <h3><b>Against players:</b></h3>
+              <p><%= @players_games_total %></p><br>
+      </div>
+      <div class="stats-card-3-leaderboard">
+          <h3><b>Agianst EasyAI:</b></h3>
+              <p><%= @easy_ai_games_total  %></p><br>
+      </div>
+      <div class="stats-card-4-leaderboard">
+          <h3><b>Agianst MediumAI:</b></h3>
+              <p><%= @medium_ai_games_total  %></p><br>
+      </div>
+      <div class="stats-card-5-leaderboard">
+          <h3><b>Agianst HardAI:</b></h3>
+              <p><%= @hard_ai_games_total  %></p><br>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-  Top 5 loosers :(
-      <% @top_5_loosers.each do |user| %>
-      <%= user.username %>
-      <%= user.wins.count %>
-  <% end%>
+
+<div class="test">
+  <div class="stats">
+    <div class="stats-cards-wrapper-leaderboard">
+    <h2 class="leaderboard-title">Top 5</h2>
+      <div class="stats-card-1-leaderboard-top-5">
+          <h3><b>Top 5 winners:</b></h3>
+              <% @top_5_players.each do |user| %>
+              <p class="pr-img-l"><%= image_tag(user.avatar.variant(resize: "50x50!")) if user.avatar.attached? %></p>
+              <p><%= link_to user.username, user_path(user) %></p>
+              <p><%= user.wins.count %></p><br>
+          <% end%>
+      </div>
+      <div class="stats-card-2-leaderboard-top-5">
+          <h3><b>Top 5 loosers:</b></h3>
+              <% @top_5_loosers.each do |user| %>
+              <p class="pr-img-l"><%= image_tag(user.avatar.variant(resize: "50x50!")) if user.avatar.attached? %></p>
+              <p><%= link_to user.username, user_path(user) %></p>
+              <p><%= user.loses.count %></p><br>
+          <% end%>
+      </div>
+      <div class="stats-card-3-leaderboard-top-5">
+          <h3><b>Best ratio:</b></h3>
+              <% @best_ratio_players.each do |user| %>
+              <p class="pr-img-l"><%= image_tag(user.avatar.variant(resize: "50x50!")) if user.avatar.attached? %></p>
+              <p><%= link_to user.username, user_path(user) %></p>
+              <p><%= user.ratio ? "#{(user.ratio * 100).round}%" : "N/A" %></p><br>
+          <% end%>
+      </div>
+    </div>
+  </div>
 </div>

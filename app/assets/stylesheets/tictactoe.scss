@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .game {
+  margin: 2rem;
   display: flex;
   justify-content: center;
 }
@@ -26,33 +28,35 @@ input[type="checkbox"] {
   outline: 2px solid black;
 }
 
-:checked, input[type="checkbox"]:hover {
+input[type="checkbox"]:checked, input[type="checkbox"]:hover {
   &:after {
     line-height: 1.9;
     font-size: 110px;
     text-align: center;
-    width: 200px;
-    height: 200px;
     display: block;
     background-color: none;
   }
 }
 
-.player0:checked {
+.player0[disabled="disabled"] {
   &:after {
     content: "♥";
-    color: red;
+    color: #ff005b;
   }
 }
 
-.player1:checked {
+.player1[disabled="disabled"] {
   &:after {
     content: "⑊";
-    color: blue;
+    color: #00b3ff;
   }
 }
 
 body {
   text-align: center;
   font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+}
+
+.game_wrapper {
+  height: 800px;
 }

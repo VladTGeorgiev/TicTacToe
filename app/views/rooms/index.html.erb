@@ -1,0 +1,23 @@
+<h1>Previous Games</h1>
+
+  <% @rooms.each_with_index do |room, i| %>
+<div class="game_wrapper">
+  <h2><%= link_to "Game ##{i+1}", room_path(room)%></h2>
+  <div>
+    <div>
+      <h3><%="WIN" if room.won_by?(@user) %></h3>
+      <h4>Finished at <%= room.updated_at.strftime("%T"+" on "+"%d %m %Y")%></h4>
+      <h4>Played against <%= link_to room.versus(@user).username, user_path(room.versus(@user))%></h4>
+    </div>
+    <div class="game">
+      <div class="board">
+          <% (0..8).each do |n| %>
+            <%= "<br>".html_safe if n > 0 && n % 3 == 0%>
+            <%= check_box_tag "game[boxes][#{n}]", nil, !!room.tictactoe.boxes[n], disabled: true, class: "player#{room.tictactoe.boxes[n]}"%>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  <% end %>
+

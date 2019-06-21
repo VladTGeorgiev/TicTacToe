@@ -1,1 +1,38 @@
-<h1>This is a personal page of <%= @user.username %></h1>
+<div class="hello">
+  <div class="parent">
+    <h1>
+      This is the personal page of <%= @user.username %>!  
+    </h1>
+    <div class="pr-img">
+      <%= image_tag(@user.avatar.variant(resize: "100x100!")) if @user.avatar.attached? %>
+    </div>
+  </div>
+</div>
+
+<div class="test">
+    <div class="stats">
+    <h2 class="">Here are their stats:</h2>
+        <div class="stats-cards-wrapper">
+            <div class="stats-card-1">
+                <h3><b>Win: </b></h3>
+                    <p><%= @wins %></p><br>
+            </div>
+            <div class="stats-card-2">
+                <h3><b>Loss:</b></h3>
+                    <p><%= @loses %></p><br>
+            </div>
+            <div class="stats-card-3">
+                <h3><b>Draw:</b></h3>
+                    <p><%= @draws %></p><br>
+            </div>
+            <div class="stats-card-4">
+                <h3><b>Total:</b></h3>
+                    <p><%= @total %></p><br>
+            </div>
+            <div class="stats-card-5">
+                <h3><b>Success ratio:</b></h3>
+                  <p><%= @ratio %></p><br>
+            </div>
+        </div>
+    </div>
+</div>

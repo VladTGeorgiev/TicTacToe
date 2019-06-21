@@ -1,7 +1,10 @@
+<div>
 <h1>Who would you like to play with?</h1>
-
-<%= form_for Room.new do |f| %>
-  <%= f.label :opponent%>
-  <%= f.collection_select :opponent_id, User.order(:username).reject(&:playing?), :id, :username%>
-  <%= f.submit "It's time to D-d-d-d-duel!"%>
-<% end %>
+</div>
+<div class="new_game">
+  <br><br>
+  <%= form_for Room.new do |f| %>
+    <p class="select"><%= f.collection_select :opponent_id, User.order(:username).reject(&:playing?), :id, :username%></p>
+    <p id="opponent_select_button"><%= f.submit "It's time to D-d-d-d-duel!"%></p>
+  <% end %>
+</div>

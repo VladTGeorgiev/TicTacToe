@@ -3,15 +3,21 @@ class RoomsController < ApplicationController
   def new
   end
 
+  def index
+    @user = get_user
+    @rooms = @user.past_rooms
+    render layout: "rooms"
+  end
+
   def create
     opponent = get_opponent
     clear_errors
     if opponent == get_user
-      flash[:errors] << "Congradulations, you played yourself"
+      add_error "Congratulations, you played yourself"
       return redirect_to new_room_path
     end
     if opponent.playing?
-      flash[:errors] << "This opponent is currently playing with someone else"
+      add_error "This opponent is currently playing with someone else"
       return redirect_to new_room_path
     end
     concede_prev_games
@@ -35,9 +41,37 @@ class RoomsController < ApplicationController
     else
       game = room.tictactoe
       game.next_turn(selections)
-      game.next_player unless game.over?
+      unless game.over?
+        game.next_player
+        if room.opponent.ai
+          cpu = room.opponent.username.constantize.new
+          selections = cpu.move(game.boxes)
+          game.next_turn(selections)
+          game.next_player unless game.over?
+        else
+          loop do
+            sleep 1
+            break if room.reload.curr_player?(curr_user) || !room.reload.active?
+          end
+        end
+      end
     end
+    flash[:again] = true if !room.reload.active?
     redirect_to room_path(room)
+  end
+
+  def history
+    @room = get_room
+    user = get_user
+    if !(@room.host == user || @room.opponent == user)
+      add_error 'Your game was not found'
+      return redirect_to home_path
+    end
+    @game = @room.tictactoe
+    @boxes = @game.game_at(params[:turn].to_i - 1)
+    @your_turn = false
+    @active = false
+    render :"tictactoe/new", layout: "tictactoe"
   end
 
 
@@ -49,6 +83,7 @@ class RoomsController < ApplicationController
       return redirect_to home_path
     end
     @game = @room.tictactoe
+    @boxes = @game.boxes
     @your_turn = false if @game.status != "active"
     if @game.status == "draw"
       add_message "It is a draw"
@@ -67,6 +102,7 @@ class RoomsController < ApplicationController
     room = get_room
     winner = (room.host == get_user ? "1" : "0")
     room.tictactoe.update(status: winner)
+    flash[:again] = true
     redirect_to room_path(room)
   end
 
