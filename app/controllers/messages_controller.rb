@@ -27,6 +27,7 @@ class MessagesController < ApplicationController
 
   def connect
     Message.create(from: get_user, to_id: params[:to_id], title: "connection")
+    session[:from] = params[:to_id]
     redirect_to messages_path
   end
 
