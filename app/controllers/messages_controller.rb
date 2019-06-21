@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
       options1[:from] = @from
       options2[:to] = @from
     end
-    @messages = Message.where(options1).or(Message.where(options2)).reject(&:title).reverse
+    @messages = Message.where(options1).or(Message.where(options2)).reject(&:title).sort_by(&:created_at).reverse
     @conversations = Message.where(to: @user).map(&:from)
     @conversations += Message.where(from: @user).map(&:to)
     @conversations.uniq!
@@ -34,11 +34,15 @@ class MessagesController < ApplicationController
     @message = Message.create(attr)
     if @message.valid?
       add_message "Your message was successfuly sent"
-      redirect_to messages_path
     else
       add_error @message.errors.full_messages
-      redirect_to messages_path
     end
+    to = User.find(params[:message][:to_id])
+    if to.ai
+      text = ChatBot.new.talk
+      Message.create(to_id: params[:message][:from_id], from: to, text: text)
+    end
+    redirect_to messages_path
   end
 
   def show
