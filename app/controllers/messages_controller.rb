@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
       options1[:from] = @from
       options2[:to] = @from
     end
-    @messages = Message.where(options1).or(Message.where(options2)).reject(&:title).reverse
+    @messages = Message.where(options1).or(Message.where(options2)).reject(&:title).sort_by(&:created_at).reverse
     @conversations = Message.where(to: @user).map(&:from)
     @conversations += Message.where(from: @user).map(&:to)
     @conversations.uniq!
