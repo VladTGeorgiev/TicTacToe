@@ -252,7 +252,8 @@ h1, h2, h3 {
 
  body
  {
-  background-image: url("wood_bg.jpg");
+  background: radial-gradient(circle, rgba(26,26,29,1) 50%, rgba(83,82,83,1) 100%);
+  // background-image: url("wood_bg.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
